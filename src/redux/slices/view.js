@@ -1,23 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    current: ""
+    modal: {
+        type: "",
+        data: {}
+    }
 }
 
 const viewSlice = createSlice({
     name: "data",
     initialState,
     reducers: {
-        setView: {
+        setModal: {
             reducer(state, action) {
-                state.current = action.payload
+                state.modal = action.payload
             }
         }
     }
 })
 
 export const {
-    setView
+    setModal
 } = viewSlice.actions
 
 export default viewSlice.reducer

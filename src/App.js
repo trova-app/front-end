@@ -1,16 +1,17 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import Signup from './components/Signup'
+// import Signup from './components/Signup'
 import Login from './components/Login'
 import ChangePassword from './components/ChangePassword'
-import ChangeEmail from './components/ChangeEmail'
-import VerifyEmail from './components/VerifyEmail'
 import { setTokens, setUserAttributes } from './redux/slices/auth'
-import { setView } from './redux/slices/view'
 import { logout } from './auth/logout'
 import { getSession } from './auth/getSession'
 
-function App({ auth, view, setView, setTokens, setUserAttributes }) {
+const App = ({
+  auth,
+  setTokens,
+  setUserAttributes
+}) => {
 
   useEffect(() => {
     getSession()
@@ -32,37 +33,33 @@ function App({ auth, view, setView, setTokens, setUserAttributes }) {
       })
   }, [setTokens, setUserAttributes])
 
+  if (auth.tokens) {
+    return (
+      <>
+        <button onClick={() => {
+          logout()
+          setTokens(null)
+          setUserAttributes(null)
+        }}>
+          Log me out
+        </button>
+        <ChangePassword />
+        <p>{JSON.stringify(auth.userAttributes)}</p>
+      </>
+    )
+  }
+
   return (
     <div>
-      <Signup />
+      {/* <Signup /> */}
       <Login />
-      {view === "dashboard" &&
-        <>
-          <button onClick={() => {
-            logout()
-            setTokens(null)
-            setUserAttributes(null)
-            setView("")
-          }}>
-            Log me out
-            </button>
-          <ChangePassword />
-          <ChangeEmail />
-          <p>{JSON.stringify(auth.userAttributes)}</p>
-        </>
-      }
-      { view === "verifyEmail" && <>
-        <VerifyEmail />
-      </>
-      }
     </div>
-  );
+  )
 }
 
 export default connect(
   state => ({
-    auth: state.auth,
-    view: state.view.current
+    auth: state.auth
   }),
-  { setTokens, setUserAttributes, setView }
+  { setTokens, setUserAttributes }
 )(App);
