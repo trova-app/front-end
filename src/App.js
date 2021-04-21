@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import Signup from './components/Signup'
 import Login from './components/Login'
 import ChangePassword from './components/ChangePassword'
+import Dashboard from './components/Dashboard'
 import { setTokens, setUserAttributes } from './redux/slices/auth'
 import { logout } from './auth/logout'
 import { getSession } from './auth/getSession'
@@ -44,7 +45,7 @@ const App = ({
           Log me out
         </button>
         <ChangePassword />
-        <p>{JSON.stringify(auth.userAttributes)}</p>
+        <Dashboard />
       </>
     )
   }
