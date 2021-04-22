@@ -61,7 +61,6 @@ const SignupComponent = ({ setTokens, setUserAttributes, setModal }) => {
                         token: session.refreshToken.token
                     }
                 })
-                setModal("dashboard")
             })
             .catch(err => {
                 if (err.code === "UserNotConfirmedException") {

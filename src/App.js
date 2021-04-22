@@ -1,57 +1,28 @@
-import { useEffect } from 'react'
 import { connect } from 'react-redux'
 // import Signup from './components/Signup'
 import Login from './components/Login'
-import ChangePassword from './components/ChangePassword'
 import Dashboard from './components/Dashboard'
+import { useSession } from './hooks/useSession'
 import { setTokens, setUserAttributes } from './redux/slices/auth'
-import { logout } from './auth/logout'
-import { getSession } from './auth/getSession'
 
 const App = ({
   auth,
   setTokens,
   setUserAttributes
 }) => {
-
-  useEffect(() => {
-    getSession()
-      .then(({ session, attributes }) => {
-        setUserAttributes(attributes)
-        setTokens({
-          accessToken: {
-            jwtToken: session.accessToken.jwtToken,
-            payload: session.accessToken.payload
-          },
-          idToken: {
-            jwtToken: session.idToken.jwtToken,
-            payload: session.idToken.payload
-          },
-          refreshToken: {
-            token: session.refreshToken.token
-          }
-        })
-      })
-  }, [setTokens, setUserAttributes])
+  useSession(setTokens, setUserAttributes)
 
   if (auth.tokens) {
-    return (
-      <>
-        <button onClick={() => {
-          logout()
-          setTokens(null)
-          setUserAttributes(null)
-        }}>
-          Log me out
-        </button>
-        <ChangePassword />
-        <Dashboard />
-      </>
-    )
+    return <Dashboard />
   }
 
   return (
-    <div>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
       {/* <Signup /> */}
       <Login />
     </div>
@@ -60,7 +31,7 @@ const App = ({
 
 export default connect(
   state => ({
-    auth: state.auth
+    auth: state.auth,
   }),
   { setTokens, setUserAttributes }
 )(App);
