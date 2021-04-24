@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { logout } from '../auth/logout'
 import { setTokens, setUserAttributes } from '../redux/slices/auth'
-import { setModal } from '../redux/slices/view'
 import AdminView from './Admin'
 import Pool from '../auth/Pool'
 
-const Dashboard = ({ auth, view, setTokens, setUserAttributes, setModal }) => {
+const Dashboard = ({ auth, view, setTokens, setUserAttributes }) => {
     const [data, setData] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         fetch(`https://trova-data-bucket-a1-dev.s3-us-west-1.amazonaws.com/players.json`)
@@ -32,10 +33,11 @@ const Dashboard = ({ auth, view, setTokens, setUserAttributes, setModal }) => {
                 }
                 setTokens(null)
                 setUserAttributes(null)
+                history.push("/login")
             }}>
                 Log me out
         </button>
-            {auth.tokens.idToken.payload["cognito:groups"].includes("Admin") && <button onClick={() => setModal({ type: "Admin", data: {} })}>Open Admin View</button>}
+            {auth.tokens.idToken.payload["cognito:groups"].includes("Admin") && <button onClick={() => history.push("/admin")}>Open Admin View</button>}
             <p>{JSON.stringify(data)}</p>
             {view.modal.type === "Admin" && <AdminView />}
 
@@ -48,5 +50,5 @@ export default connect(
         auth: state.auth,
         view: state.view
     }),
-    { logout, setTokens, setUserAttributes, setModal }
+    { logout, setTokens, setUserAttributes }
 )(Dashboard)

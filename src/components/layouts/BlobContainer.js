@@ -48,8 +48,10 @@ const BlobContainer = ({ children }) => {
                     style={{
                         width: height,
                         height: "100%",
-                        margin: "0 auto",
-                        marginLeft: width < 1150 ? "20%" : "auto"
+                        marginTop: "0",
+                        marginBottom: "0",
+                        marginLeft: width < 1150 ? "20%" : "auto",
+                        marginRight: "auto",
                     }}>
                     {children}
                 </div>

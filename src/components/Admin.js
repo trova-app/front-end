@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setModal } from '../redux/slices/view'
+import { useHistory } from 'react-router-dom'
 
 // Make sure you check that the user is an admin with this snippet. Short circuit the render if they aren't.
 // auth.tokens.idToken.payload["cognito:groups"].includes("Admin")
+// Do this at the router level!
 
-const Admin = ({ setModal }) => {
+const Admin = () => {
+    const history = useHistory()
+
     return (
         <div style={{
             position: "absolute",
@@ -19,7 +22,7 @@ const Admin = ({ setModal }) => {
             zIndex: 999
         }}>
             Make something great with the AdminView component here!
-            <button onClick={() => setModal({ type: "", data: {} })}>Close</button>
+            <button onClick={() => history.push("/dashboard")}>Close</button>
         </div>
     )
 }
@@ -28,5 +31,5 @@ export default connect(
     state => ({
         auth: state.auth,
     }),
-    { setModal }
+    null
 )(Admin)

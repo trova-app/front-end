@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { authenticate } from '../auth/authenticate'
 import { verifyEmail } from '../auth/verifyEmail'
@@ -17,6 +18,7 @@ const SignupComponent = ({ setTokens, setUserAttributes, setModal }) => {
     const [verificationCode, setVerificationCode] = useState("")
     const [newPasswordCode, setNewPasswordCode] = useState("")
     const [newPassword, setNewPassword] = useState("")
+    const history = useHistory()
 
     const verify = (event) => {
         event.preventDefault()
@@ -63,6 +65,7 @@ const SignupComponent = ({ setTokens, setUserAttributes, setModal }) => {
                         token: session.refreshToken.token
                     }
                 })
+                history.push("/dashboard")
             })
             .catch(err => {
                 if (err.code === "UserNotConfirmedException") {
