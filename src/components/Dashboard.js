@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { logout } from '../auth/logout'
 import { setTokens, setUserAttributes } from '../redux/slices/auth'
 import { setModal } from '../redux/slices/view'
-import AdminView from './AdminView'
+import AdminView from './Admin'
 import Pool from '../auth/Pool'
 
-const Dashboard = ({ auth, view, logout, setTokens, setUserAttributes, setModal }) => {
+const Dashboard = ({ auth, view, setTokens, setUserAttributes, setModal }) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -30,7 +30,6 @@ const Dashboard = ({ auth, view, logout, setTokens, setUserAttributes, setModal 
                 if (user) {
                     user.signOut()
                 }
-                // logout()
                 setTokens(null)
                 setUserAttributes(null)
             }}>

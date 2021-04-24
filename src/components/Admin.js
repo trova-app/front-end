@@ -5,7 +5,7 @@ import { setModal } from '../redux/slices/view'
 // Make sure you check that the user is an admin with this snippet. Short circuit the render if they aren't.
 // auth.tokens.idToken.payload["cognito:groups"].includes("Admin")
 
-const AdminView = ({ setModal }) => {
+const Admin = ({ setModal }) => {
     return (
         <div style={{
             position: "absolute",
@@ -29,4 +29,4 @@ export default connect(
         auth: state.auth,
     }),
     { setModal }
-)(AdminView)
+)(Admin)

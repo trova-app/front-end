@@ -8,6 +8,8 @@ import { initiateForgotPassword, changeForgottenPassword } from '../auth/forgotP
 import { setTokens, setUserAttributes } from '../redux/slices/auth'
 import { setModal } from '../redux/slices/view'
 
+import BlobContainer from './layouts/BlobContainer'
+
 const SignupComponent = ({ setTokens, setUserAttributes, setModal }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -94,35 +96,37 @@ const SignupComponent = ({ setTokens, setUserAttributes, setModal }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="email">Email</label>
-                <input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <label htmlFor="password">Password</label>
-                <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Login</button>
-            </form>
-            <button onClick={() => initiateForgotPassword(email)}>Forgot Password?</button>
-            <form onSubmit={newPasswordSubmit}>
-                <label htmlFor="newPasswordCode">New Password Code</label>
-                <input
-                    value={newPasswordCode}
-                    onChange={(e) => setNewPasswordCode(e.target.value)}
-                />
-                <label htmlFor="newPasswordCode">New Password</label>
-                <input
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <button type="submit">Change Password</button>
-            </form>
-        </div>
+        <BlobContainer>
+            <div>
+                <form onSubmit={onSubmit}>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label htmlFor="password">Password</label>
+                    <input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button type="submit">Login</button>
+                </form>
+                <button onClick={() => initiateForgotPassword(email)}>Forgot Password?</button>
+                <form onSubmit={newPasswordSubmit}>
+                    <label htmlFor="newPasswordCode">New Password Code</label>
+                    <input
+                        value={newPasswordCode}
+                        onChange={(e) => setNewPasswordCode(e.target.value)}
+                    />
+                    <label htmlFor="newPasswordCode">New Password</label>
+                    <input
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                    <button type="submit">Change Password</button>
+                </form>
+            </div>
+        </BlobContainer>
     )
 }
 
