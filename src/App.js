@@ -13,7 +13,7 @@ import Home from './components/Home'
 import Login from './routes/Login'
 import ForgotPassword from './routes/ForgotPassword'
 import ResetPassword from './routes/ResetPassword'
-import Dashboard from './components/Dashboard'
+import Dashboard from './routes/Dashboard'
 import ChangePassword from './components/ChangePassword'
 import Admin from './components/Admin'
 

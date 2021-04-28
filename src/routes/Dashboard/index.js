@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { logout } from '../auth/logout'
-import { setTokens, setUserAttributes } from '../redux/slices/auth'
-import AdminView from './Admin'
-import Pool from '../auth/Pool'
+import { logout } from '../../auth/logout'
+import { setTokens, setUserAttributes } from '../../redux/slices/auth'
+import AdminView from '../../components/Admin'
+import Pool from '../../auth/Pool'
 
 const Dashboard = ({ auth, view, setTokens, setUserAttributes }) => {
     const [data, setData] = useState([])
