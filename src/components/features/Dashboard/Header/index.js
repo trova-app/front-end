@@ -14,10 +14,16 @@ const Component = ({ idToken, setTokens, setUserAttributes }) => {
     const history = useHistory()
     const [searchTerm, setSearchTerm] = useState("")
 
+    const submitSearch = (e) => {
+        e.preventDefault()
+
+        console.log(searchTerm)
+    }
+
     return (
         <Styled.Container>
             <SVG.TrovaLogo style={{ height: "75%" }} />
-            <Styled.SearchForm>
+            <Styled.SearchForm onSubmit={(e) => submitSearch(e)}>
                 <Styled.SearchInput
                     type="text"
                     placeholder="Search for a player, position, or team"

@@ -1,25 +1,32 @@
-// import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+
 import { logout } from '../../auth/logout'
 import { setTokens, setUserAttributes } from '../../redux/slices/auth'
 
 import FullScreen from '../../components/layouts/FullScreen'
 import Header from '../../components/features/Dashboard/Header'
+import Filters from '../../components/features/Dashboard/Filters'
+import DataTable from '../../components/features/Dashboard/DataTable'
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 90vh;
+`
 
 const Dashboard = ({ ...props }) => {
-    // const [data, setData] = useState([])
 
-    // useEffect(() => {
-    //     fetch(`https://trova-data-bucket-a1-dev.s3-us-west-1.amazonaws.com/players.json`)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             setData(res)
-    //         })
-    // }, [])
 
     return (
         <FullScreen>
             <Header />
+            <Container>
+                <Filters />
+                <DataTable />
+            </Container>
         </FullScreen>
     )
 }

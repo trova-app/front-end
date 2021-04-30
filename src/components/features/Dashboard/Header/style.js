@@ -35,7 +35,7 @@ export const SearchInput = styled.input`
 
     &::placeholder {
         color: ${colors.lightBlue};
-        opacity: .7;
+        opacity: .6;
     }
 `
 
