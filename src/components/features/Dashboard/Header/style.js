@@ -7,7 +7,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 10vh;
+    height: 15vh;
+    margin-bottom: 3.5vh;
     padding: 0 2.5%;
 `
 

@@ -18,7 +18,6 @@ const DataTable = ({ ...props }) => {
             <Styled.Table>
                 <Styled.TableHead>
                     <tr>
-
                         <th>Name</th>
                         <th>Team</th>
                         <th>Position</th>
@@ -43,12 +42,11 @@ const DataTable = ({ ...props }) => {
                 <Styled.TableBody>
                     {data.slice(0, 100).map(elem => {
                         const nameSplit = elem.Player?.split(" ") || ["?", "?"]
-                        const name = `${nameSplit[1]}, ${nameSplit[0][0]}`
-
+                        const name = `${nameSplit[1]}, ${nameSplit[0][0]}.`
 
                         return (
-                            <tr key={"" + elem.Player + elem.Team}>
-                                <td>{name}</td>
+                            <Styled.TableRow key={"" + elem.Player + elem.Team}>
+                                <Styled.TableName>{name}</Styled.TableName>
                                 <td>{elem.Team}</td>
                                 <td>{elem.POS}</td>
                                 <td>{elem.GP}</td>
@@ -67,7 +65,7 @@ const DataTable = ({ ...props }) => {
                                 <td>{elem["SB"]}</td>
                                 <td>{elem["CS"]}</td>
                                 <td>{elem["HP"]}</td>
-                            </tr>
+                            </Styled.TableRow>
                         )
                     })}
                 </Styled.TableBody>
