@@ -4,7 +4,7 @@ import { colors } from '../../../../styles/colors'
 export const Container = styled.div`
     position: relative;
     width: 80vw;
-    height: 100%;
+    max-height: 100%;
     margin-left: 12px;
     overflow: auto;
 `

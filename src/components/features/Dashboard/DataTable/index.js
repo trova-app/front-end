@@ -43,7 +43,7 @@ const DataTable = ({ filters, searchTerm }) => {
                 <Styled.TableBody>
                     {data
                         // Filter by Position
-                        .filter(elem => filters.positions[elem.POS])
+                        .filter(elem => filters.positions[elem.position])
                         // Filter by Stats
                         .filter(elem => filters.gamesPlayed[1] >= Number(elem.GP) && filters.gamesPlayed[0] <= Number(elem.GP))
                         .filter(elem => filters.atBats[1] >= Number(elem.AB) && filters.atBats[0] <= Number(elem.AB))
@@ -64,18 +64,16 @@ const DataTable = ({ filters, searchTerm }) => {
                         // Filter by Search
                         .filter(elem => {
                             if (!searchTerm) return elem
-                            return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || elem.Player?.toLowerCase().includes(searchTerm.toLowerCase())
+                            return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
                         })
                         .slice(0, 100)
                         .map(elem => {
-                            const nameSplit = elem.Player?.split(" ") || ["?", "?"]
-                            const name = `${nameSplit[1]}, ${nameSplit[0][0]}.`
 
                             return (
-                                <Styled.TableRow key={"" + elem.Player + elem.Team}>
-                                    <Styled.TableName>{name}</Styled.TableName>
+                                <Styled.TableRow key={"" + elem.firstName + elem.lastName + elem.Team}>
+                                    <Styled.TableName>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.TableName>
                                     <td>{elem.Team}</td>
-                                    <td>{elem.POS}</td>
+                                    <td>{elem.position}</td>
                                     <td>{elem.GP}</td>
                                     <td>{elem.AB}</td>
                                     <td>{elem.AVG}</td>
