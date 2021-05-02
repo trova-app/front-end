@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import * as Styled from './style'
 
-const DataTable = ({ filters }) => {
+const DataTable = ({ filters, searchTerm }) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -58,6 +58,10 @@ const DataTable = ({ filters }) => {
                         .filter(elem => filters.stolenBases[1] >= Number(elem["SB"]) && filters.stolenBases[0] <= Number(elem["SB"]))
                         .filter(elem => filters.caughtStealing[1] >= Number(elem["CS"]) && filters.caughtStealing[0] <= Number(elem["CS"]))
                         .filter(elem => filters.hitByPitches[1] >= Number(elem["HP"]) && filters.hitByPitches[0] <= Number(elem["HP"]))
+                        .filter(elem => {
+                            if (!searchTerm) return elem
+                            return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || elem.Player?.toLowerCase().includes(searchTerm.toLowerCase())
+                        })
                         .slice(0, 100)
                         .map(elem => {
                             const nameSplit = elem.Player?.split(" ") || ["?", "?"]
@@ -89,14 +93,14 @@ const DataTable = ({ filters }) => {
                         })}
                 </Styled.TableBody>
             </Styled.Table>
-            {/* {JSON.stringify(data)} */}
         </Styled.Container>
     )
 }
 
 export default connect(
     state => ({
-        filters: state.filters
+        filters: state.filters,
+        searchTerm: state.search.term
     }),
     null
 )(DataTable)

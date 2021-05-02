@@ -7,17 +7,22 @@ import { colors } from '../../../../styles/colors'
 
 import Pool from '../../../../auth/Pool'
 import { setTokens, setUserAttributes } from '../../../../redux/slices/auth'
+import { setSearchTerm } from '../../../../redux/slices/search'
 
 import SVG from '../../../svg'
 
-const Component = ({ idToken, setTokens, setUserAttributes }) => {
+const Component = ({
+    idToken,
+    setTokens,
+    setUserAttributes,
+    setSearchTerm
+}) => {
     const history = useHistory()
-    const [searchTerm, setSearchTerm] = useState("")
+    const [search, setSearch] = useState("")
 
     const submitSearch = (e) => {
         e.preventDefault()
-
-        console.log(searchTerm)
+        setSearchTerm(search)
     }
 
     return (
@@ -26,14 +31,14 @@ const Component = ({ idToken, setTokens, setUserAttributes }) => {
             <Styled.SearchForm onSubmit={(e) => submitSearch(e)}>
                 <Styled.SearchInput
                     type="text"
-                    placeholder="Search for a player, position, or team"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search for a player or team"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
-                <Styled.SearchButton hasSearchTerm={!!searchTerm}>
+                <Styled.SearchButton hasSearchTerm={!!search}>
                     <SVG.Search
                         style={{ width: "32px" }}
-                        strokeColor={!!searchTerm ? colors.white : colors.lightBlue}
+                        strokeColor={!!search ? colors.white : colors.lightBlue}
                     />
                 </Styled.SearchButton>
             </Styled.SearchForm>
@@ -63,5 +68,5 @@ export default connect(
     state => ({
         idToken: state.auth.tokens.idToken.payload
     }),
-    { setTokens, setUserAttributes }
+    { setTokens, setUserAttributes, setSearchTerm }
 )(Component)
