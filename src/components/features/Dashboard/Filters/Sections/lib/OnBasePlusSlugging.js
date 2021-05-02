@@ -11,7 +11,7 @@ const OnBasePlusSlugging = ({ onBasePlusSlugging, setBounds }) => {
     return (
         <SectionContainer header="OPS">
             <RangeInput
-                step={1}
+                step={.001}
                 rangeMin={0}
                 rangeMax={10}
                 values={values}

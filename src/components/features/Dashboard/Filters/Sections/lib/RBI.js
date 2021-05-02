@@ -9,7 +9,7 @@ const RBI = ({ rbi, setBounds }) => {
     const [values, setValues] = useState(rbi)
 
     return (
-        <SectionContainer header="HR">
+        <SectionContainer header="RBI">
             <RangeInput
                 step={1}
                 rangeMin={0}
