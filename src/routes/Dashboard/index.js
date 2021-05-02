@@ -14,7 +14,7 @@ const Container = styled.div`
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    height: 81.5vh;
+    height: 85vh;
 `
 
 const Dashboard = ({ ...props }) => {

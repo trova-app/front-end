@@ -5,13 +5,13 @@ export const Container = styled.div`
     position: relative;
     width: 80vw;
     height: 100%;
+    margin-left: 12px;
     overflow: auto;
 `
 
 export const Table = styled.table`
     width: 100%;
     height: 100%;
-    margin-left: 12px;
 `
 
 export const TableHead = styled.thead`
@@ -32,9 +32,8 @@ export const TableHead = styled.thead`
             &:first-of-type {
                 position: sticky;
                 left: 0;
-                /* width: 400px; */
                 padding: 0 5px;
-                z-index: 2;
+                z-index: 1;
             }
         }
     }
@@ -70,4 +69,7 @@ export const TableName = styled.td`
     background-color: ${colors.white};
     text-align: left;
 
+    &:hover {
+        background-color: ${colors.lightGray};
+    }
 `

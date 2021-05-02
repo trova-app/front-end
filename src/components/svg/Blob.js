@@ -19,8 +19,6 @@ const Blob = ({ style }) => {
                 </linearGradient>
             </defs>
         </svg>
-
-
     )
 }
 
