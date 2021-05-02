@@ -9,6 +9,7 @@ const TwoThumbs = ({
     values,
     setValues,
     setFinalValues,
+    toFixed
 }) => {
     return (
         <div
@@ -74,9 +75,24 @@ const TwoThumbs = ({
                     )
                 }}
             />
-            <output style={{ marginTop: '30px' }} id="output">
-                {values[0].toFixed(3)} - {values[1].toFixed(3)}
-            </output>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    fontFamily: "Nunito",
+                    color: colors.gray,
+                    fontSize: "18px"
+                }}
+            >
+                <div>
+                    {values[0].toFixed(toFixed || 0)}
+                </div>
+                <div>
+                    {values[1].toFixed(toFixed || 0)}
+                </div>
+            </div>
         </div>
     );
 };

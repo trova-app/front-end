@@ -13,13 +13,14 @@ const OnBasePercentage = ({ onBasePercentage, setBounds }) => {
             <RangeInput
                 step={.001}
                 rangeMin={0}
-                rangeMax={3}
+                rangeMax={1}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => setBounds({
                     key: "onBasePercentage",
                     value: values
                 })}
+                toFixed={3}
             />
         </SectionContainer>
     )

@@ -13,13 +13,14 @@ const OnBasePlusSlugging = ({ onBasePlusSlugging, setBounds }) => {
             <RangeInput
                 step={.001}
                 rangeMin={0}
-                rangeMax={10}
+                rangeMax={2}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => setBounds({
                     key: "onBasePlusSlugging",
                     value: values
                 })}
+                toFixed={3}
             />
         </SectionContainer>
     )

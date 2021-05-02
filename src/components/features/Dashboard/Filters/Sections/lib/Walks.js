@@ -13,7 +13,7 @@ const Walks = ({ walks, setBounds }) => {
             <RangeInput
                 step={1}
                 rangeMin={0}
-                rangeMax={300}
+                rangeMax={250}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => setBounds({

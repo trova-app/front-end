@@ -20,6 +20,7 @@ const BattingAverage = ({ battingAverage, setBounds }) => {
                     key: "battingAverage",
                     value: values
                 })}
+                toFixed={3}
             />
         </SectionContainer>
     )

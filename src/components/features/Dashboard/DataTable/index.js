@@ -14,8 +14,6 @@ const DataTable = ({ filters }) => {
             })
     }, [])
 
-    // const filterTester = (key, elem, value) => filters[key][1] > Number(elem[value] && filters[key][0] < Number(elem[value]))
-
     return (
         <Styled.Container>
             <Styled.Table>
