@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
+import { colors } from './colors'
 
-export const CssReset = createGlobalStyle`
+export default createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,4 +46,25 @@ a:visited, a:link, a:hover, a:focus {
         cursor: pointer;
         text-decoration: none;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: ${colors.lightGrayOpacity50};
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: ${colors.white};
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color:${colors.lightGrayOpacity50};
+  border-radius: 20px;
+  border: 4px solid ${colors.white};
+}
+
+
 `

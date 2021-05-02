@@ -7,7 +7,7 @@ import {
   Route
 } from 'react-router-dom'
 
-import { CssReset } from './styles/CssReset'
+import GlobalStyles from './styles/GlobalStyles'
 import ProtectedRoute from './components/shared/ProtectedRoute'
 import Home from './components/Home'
 import Login from './routes/Login'
@@ -26,7 +26,7 @@ const App = ({
 
   return (
     <>
-      <CssReset />
+      <GlobalStyles />
       <Router>
         <Switch>
           <Route exact path="/">

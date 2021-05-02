@@ -42,6 +42,9 @@ const DataTable = ({ filters, searchTerm }) => {
                 </Styled.TableHead>
                 <Styled.TableBody>
                     {data
+                        // Filter by Position
+                        .filter(elem => filters.positions[elem.POS])
+                        // Filter by Stats
                         .filter(elem => filters.gamesPlayed[1] >= Number(elem.GP) && filters.gamesPlayed[0] <= Number(elem.GP))
                         .filter(elem => filters.atBats[1] >= Number(elem.AB) && filters.atBats[0] <= Number(elem.AB))
                         .filter(elem => filters.battingAverage[1] >= Number(elem.AVG) && filters.battingAverage[0] <= Number(elem.AVG))
@@ -58,6 +61,7 @@ const DataTable = ({ filters, searchTerm }) => {
                         .filter(elem => filters.stolenBases[1] >= Number(elem["SB"]) && filters.stolenBases[0] <= Number(elem["SB"]))
                         .filter(elem => filters.caughtStealing[1] >= Number(elem["CS"]) && filters.caughtStealing[0] <= Number(elem["CS"]))
                         .filter(elem => filters.hitByPitches[1] >= Number(elem["HP"]) && filters.hitByPitches[0] <= Number(elem["HP"]))
+                        // Filter by Search
                         .filter(elem => {
                             if (!searchTerm) return elem
                             return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || elem.Player?.toLowerCase().includes(searchTerm.toLowerCase())
