@@ -7,7 +7,6 @@ import { setBounds } from '../../../../../../redux/slices/filters'
 
 const GamesPlayed = ({ gamesPlayed, setBounds }) => {
     const [values, setValues] = useState(gamesPlayed)
-    console.log(values)
 
     useEffect(() => {
         setValues(gamesPlayed)

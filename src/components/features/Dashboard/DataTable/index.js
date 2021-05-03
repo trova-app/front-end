@@ -102,7 +102,7 @@ const DataTable = ({
                         // Filter by Search
                         .filter(elem => {
                             if (!searchTerm) return elem
-                            return [elem.Team, "Team"]?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
+                            return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
                         })
 
                         .sort((a, b) => {
