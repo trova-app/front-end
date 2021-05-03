@@ -12,6 +12,7 @@ export const Container = styled.div`
 export const Table = styled.table`
     width: 100%;
     height: 100%;
+    table-layout: fixed;
 `
 
 export const Header = styled.thead`
@@ -26,10 +27,11 @@ export const Header = styled.thead`
         th {
             position: sticky;
             top: 0;
-            padding: 0 30px;
+            width: 100px;
             background-color: ${colors.white};
             cursor: pointer;
             user-select: none;
+            overflow: hidden;
 
             &:hover {
                 background-color: ${colors.lightGray};
@@ -38,8 +40,16 @@ export const Header = styled.thead`
             &:first-of-type {
                 position: sticky;
                 left: 0;
-                padding: 0 5px;
+                width: 200px;
                 z-index: 1;
+            }
+
+            &:nth-of-type(2) {
+                width: 200px;
+            }
+
+            &:nth-of-type(3) {
+                width: 150px;
             }
         }
     }
@@ -63,12 +73,12 @@ export const Row = styled.tr`
     line-height: 48px;
     white-space: nowrap;
     cursor: default;
+    overflow: hidden;
     }
 `
 
 export const Name = styled.td`
     position: sticky;
-    display: block;
     width: 200px;
     left: 0;
     padding-left: 16px;
