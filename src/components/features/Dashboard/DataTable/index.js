@@ -54,7 +54,10 @@ const DataTable = ({
                                 ["HP"]
                             ]
                                 .map(elem => (
-                                    <th onClick={() => setSort(elem[0])}>
+                                    <th
+                                        key={elem[0]}
+                                        onClick={() => setSort(elem[0])}
+                                    >
                                         {elem[1] || elem[0]}
                                         {
                                             sort.column === elem[0]
@@ -138,7 +141,7 @@ const DataTable = ({
                             return (
                                 <Styled.Row key={"" + elem.firstName + elem.lastName + [elem.Team, "Team"]}>
                                     <Styled.Name>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.Name>
-                                    <td>{[elem.Team, "Team"]}</td>
+                                    <td>{elem.Team}</td>
                                     <td>{elem.position}</td>
                                     <td>{elem.GP}</td>
                                     <td>{elem.AB}</td>

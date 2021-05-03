@@ -8,6 +8,7 @@ import { colors } from '../../../../styles/colors'
 import Pool from '../../../../auth/Pool'
 import { setTokens, setUserAttributes } from '../../../../redux/slices/auth'
 import { setSearchTerm } from '../../../../redux/slices/search'
+import { setData } from '../../../../redux/slices/data'
 
 import SVG from '../../../svg'
 
@@ -15,7 +16,8 @@ const Component = ({
     idToken,
     setTokens,
     setUserAttributes,
-    setSearchTerm
+    setSearchTerm,
+    setData
 }) => {
     const history = useHistory()
     const [search, setSearch] = useState("")
@@ -56,6 +58,7 @@ const Component = ({
                 }
                 setTokens(null)
                 setUserAttributes(null)
+                setData([])
                 history.push("/login")
             }}>
                 LOG OUT
@@ -68,5 +71,10 @@ export default connect(
     state => ({
         idToken: state.auth.tokens.idToken.payload
     }),
-    { setTokens, setUserAttributes, setSearchTerm }
+    {
+        setTokens,
+        setUserAttributes,
+        setSearchTerm,
+        setData
+    }
 )(Component)
