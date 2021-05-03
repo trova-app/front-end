@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import SectionContainer from '../index'
 import RangeInput from '../../../../../shared/RangeInput'
@@ -7,6 +7,10 @@ import { setBounds } from '../../../../../../redux/slices/filters'
 
 const HomeRuns = ({ homeRuns, setBounds }) => {
     const [values, setValues] = useState(homeRuns)
+
+    useEffect(() => {
+        setValues(homeRuns)
+    }, [homeRuns])
 
     return (
         <SectionContainer header="HR">

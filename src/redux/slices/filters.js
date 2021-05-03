@@ -61,6 +61,37 @@ const filterSlice = createSlice({
             reducer(state, action) {
                 state[action.payload.key] = action.payload.value
             }
+        },
+        clearAllFilters: {
+            reducer(state, action) {
+                state.positions = {
+                    "C": true,
+                    "1B": true,
+                    "2B": true,
+                    "SS": true,
+                    "3B": true,
+                    "LF": true,
+                    "CF": true,
+                    "RF": true
+                }
+                state.gamesPlayed = [0, 100]
+                state.atBats = [0, 350]
+                state.battingAverage = [0, 1]
+                state.onBasePercentage = [0, 1]
+                state.onBasePlusSlugging = [0, 2]
+                state.runs = [0, 150]
+                state.hits = [0, 250]
+                state.doubles = [0, 250]
+                state.triples = [0, 250]
+                state.homeRuns = [0, 250]
+                state.rbi = [0, 300]
+                state.walks = [0, 250]
+                state.strikeouts = [0, 250]
+                state.stolenBases = [0, 100]
+                state.caughtStealing = [0, 100]
+                state.hitByPitches = [0, 100]
+
+            }
         }
     }
 })
@@ -68,7 +99,8 @@ const filterSlice = createSlice({
 export const {
     setSort,
     setPosition,
-    setBounds
+    setBounds,
+    clearAllFilters
 } = filterSlice.actions
 
 export default filterSlice.reducer

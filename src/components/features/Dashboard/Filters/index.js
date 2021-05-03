@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import * as Styled from './style'
+
+import { clearAllFilters } from '../../../../redux/slices/filters'
 
 import Position from './Sections/lib/Position'
 import GamesPlayed from './Sections/lib/GamesPlayed'
@@ -20,29 +23,35 @@ import StolenBases from './Sections/lib/StolenBases'
 import CaughtStealing from './Sections/lib/CaughtStealing'
 import HitByPitches from './Sections/lib/HitByPitches'
 
-const Filters = ({ ...props }) => {
+const Filters = ({ clearAllFilters }) => {
     return (
         <Styled.Container>
             <Styled.Header>Filters</Styled.Header>
-            <Position />
-            <GamesPlayed />
-            <AtBats />
-            <BattingAverage />
-            <OnBasePercentage />
-            <OnBasePlusSlugging />
-            <Runs />
-            <Hits />
-            <Doubles />
-            <Triples />
-            <HomeRuns />
-            <RBI />
-            <Walks />
-            <Strikeouts />
-            <StolenBases />
-            <CaughtStealing />
-            <HitByPitches />
+            <Styled.ClearFilters onClick={() => clearAllFilters()}>Clear filters</Styled.ClearFilters>
+            <Styled.Scrollable>
+                <Position />
+                <GamesPlayed />
+                <AtBats />
+                <BattingAverage />
+                <OnBasePercentage />
+                <OnBasePlusSlugging />
+                <Runs />
+                <Hits />
+                <Doubles />
+                <Triples />
+                <HomeRuns />
+                <RBI />
+                <Walks />
+                <Strikeouts />
+                <StolenBases />
+                <CaughtStealing />
+                <HitByPitches />
+            </Styled.Scrollable>
         </Styled.Container>
     )
 }
 
-export default Filters
+export default connect(
+    null,
+    { clearAllFilters }
+)(Filters)
