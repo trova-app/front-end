@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+    sort: {
+        column: "OPS",
+        order: "DESC"
+    },
     positions: {
         "C": true,
         "1B": true,
@@ -33,6 +37,21 @@ const filterSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
+        setSort: {
+            reducer(state, action) {
+
+                if (state.sort.column === action.payload && state.sort.order === "ASC") {
+                    state.sort.order = "DESC"
+                } else if (state.sort.column === action.payload) {
+                    state.sort.order = "ASC"
+                } else {
+                    state.sort = {
+                        column: action.payload,
+                        order: "DESC"
+                    }
+                }
+            }
+        },
         setPosition: {
             reducer(state, action) {
                 state.positions[action.payload] = !state.positions[action.payload]
@@ -47,6 +66,7 @@ const filterSlice = createSlice({
 })
 
 export const {
+    setSort,
     setPosition,
     setBounds
 } = filterSlice.actions

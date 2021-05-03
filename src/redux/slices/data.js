@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-
+    dataset: []
 }
 
 const dataSlice = createSlice({
@@ -10,7 +10,7 @@ const dataSlice = createSlice({
     reducers: {
         setData: {
             reducer(state, action) {
-                state.data = action.payload
+                state.dataset = action.payload
             }
         }
     }

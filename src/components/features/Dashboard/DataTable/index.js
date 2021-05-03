@@ -1,46 +1,58 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import * as Styled from './style'
+import { colors } from '../../../../styles/colors'
 
-const DataTable = ({ filters, searchTerm }) => {
-    const [data, setData] = useState([])
+import { setData } from '../../../../redux/slices/data'
+import { setSort } from '../../../../redux/slices/filters'
 
+import SVG from '../../../svg'
+
+const DataTable = ({
+    data,
+    setData,
+    filters,
+    searchTerm,
+    sort,
+    setSort
+}) => {
     useEffect(() => {
-        fetch(`https://trova-data-bucket-a1-dev.s3-us-west-1.amazonaws.com/players.json`)
-            .then(res => res.json())
-            .then(res => {
-                setData(res)
-            })
-    }, [])
+        if (data.length === 0)
+            fetch(`https://trova-data-bucket-a1-dev.s3-us-west-1.amazonaws.com/players.json`)
+                .then(res => res.json())
+                .then(res => {
+                    setData(res)
+                })
+    }, [data, setData])
 
     return (
         <Styled.Container>
             <Styled.Table>
-                <Styled.TableHead>
+                <Styled.Header>
                     <tr>
-                        <th>Name</th>
-                        <th>Team</th>
-                        <th>Position</th>
-                        <th>GP</th>
-                        <th>AB</th>
-                        <th>AVG</th>
-                        <th>OBP</th>
-                        <th>OPS</th>
-                        <th>R</th>
-                        <th>H</th>
-                        <th>2B</th>
-                        <th>3B</th>
-                        <th>HR</th>
-                        <th>RBI</th>
-                        <th>BB</th>
-                        <th>SO</th>
-                        <th>SB</th>
-                        <th>CS</th>
-                        <th>HP</th>
+                        <th onClick={() => setSort("lastName")}>Name{sort.column === "lastName" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("Team")}>Team{sort.column === "Team" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("position")}>Position{sort.column === "position" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("GP")}>GP{sort.column === "GP" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("AB")}>AB{sort.column === "AB" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("AVG")}>AVG{sort.column === "AVG" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("OBP")}>OBP{sort.column === "OBP" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("OPS")}>OPS{sort.column === "OPS" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("R")}>R{sort.column === "R" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("H")}>H{sort.column === "H" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("2B")}>2B{sort.column === "2B" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("3B")}>3B{sort.column === "3B" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("HR")}>HR{sort.column === "HR" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("RBI")}>RBI{sort.column === "RBI" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("BB")}>BB{sort.column === "BB" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("SO")}>SO{sort.column === "SO" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("SB")}>SB{sort.column === "SB" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("CS")}>CS{sort.column === "CS" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
+                        <th onClick={() => setSort("HP")}>HP{sort.column === "HP" && <SVG.Carat fill={colors.gray} style={{ position: "absolute", top: "10px", right: "8px", width: "16px", transform: sort.order === "DESC" && "rotate(180deg)" }} />}</th>
                     </tr>
-                </Styled.TableHead>
-                <Styled.TableBody>
+                </Styled.Header>
+                <Styled.Body>
                     {data
                         // Filter by Position
                         .filter(elem => filters.positions[elem.position])
@@ -66,19 +78,50 @@ const DataTable = ({ filters, searchTerm }) => {
                             if (!searchTerm) return elem
                             return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
                         })
+
+                        .sort((a, b) => {
+                            if (["lastName", "Team", "position"].includes(sort.column)) {
+                                if (sort.order === "DESC") {
+                                    if (a[sort.column] < b[sort.column]) {
+                                        return -1
+                                    }
+
+                                    if (a[sort.column] > b[sort.column]) {
+                                        return 1
+                                    }
+
+                                    return 0
+                                } else {
+                                    if (a[sort.column] < b[sort.column]) {
+                                        return 1
+                                    }
+
+                                    if (a[sort.column] > b[sort.column]) {
+                                        return -1
+                                    }
+
+                                    return 0
+                                }
+                            } else {
+                                if (sort.order === "DESC") {
+                                    return b[sort.column] - a[sort.column]
+                                } else {
+                                    return a[sort.column] - b[sort.column]
+                                }
+                            }
+                        })
                         .slice(0, 100)
                         .map(elem => {
-
                             return (
-                                <Styled.TableRow key={"" + elem.firstName + elem.lastName + elem.Team}>
-                                    <Styled.TableName>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.TableName>
+                                <Styled.Row key={"" + elem.firstName + elem.lastName + elem.Team}>
+                                    <Styled.Name>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.Name>
                                     <td>{elem.Team}</td>
                                     <td>{elem.position}</td>
                                     <td>{elem.GP}</td>
                                     <td>{elem.AB}</td>
-                                    <td>{elem.AVG}</td>
-                                    <td>{elem.OBP}</td>
-                                    <td>{elem.OPS}</td>
+                                    <td>{elem.AVG.toFixed(3)}</td>
+                                    <td>{elem.OBP.toFixed(3)}</td>
+                                    <td>{elem.OPS.toFixed(3)}</td>
                                     <td>{elem.R}</td>
                                     <td>{elem.H}</td>
                                     <td>{elem["2B"]}</td>
@@ -90,10 +133,10 @@ const DataTable = ({ filters, searchTerm }) => {
                                     <td>{elem["SB"]}</td>
                                     <td>{elem["CS"]}</td>
                                     <td>{elem["HP"]}</td>
-                                </Styled.TableRow>
+                                </Styled.Row>
                             )
                         })}
-                </Styled.TableBody>
+                </Styled.Body>
             </Styled.Table>
         </Styled.Container>
     )
@@ -101,8 +144,10 @@ const DataTable = ({ filters, searchTerm }) => {
 
 export default connect(
     state => ({
+        data: state.data.dataset,
         filters: state.filters,
+        sort: state.filters.sort,
         searchTerm: state.search.term
     }),
-    null
+    { setData, setSort }
 )(DataTable)

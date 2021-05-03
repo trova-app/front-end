@@ -14,7 +14,7 @@ export const Table = styled.table`
     height: 100%;
 `
 
-export const TableHead = styled.thead`
+export const Header = styled.thead`
     color: ${colors.gray};
     font-family: "Nunito";
     font-weight: 400;
@@ -28,6 +28,12 @@ export const TableHead = styled.thead`
             top: 0;
             padding: 0 30px;
             background-color: ${colors.white};
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+                background-color: ${colors.lightGray};
+            }
 
             &:first-of-type {
                 position: sticky;
@@ -39,7 +45,7 @@ export const TableHead = styled.thead`
     }
 `
 
-export const TableBody = styled.tbody`
+export const Body = styled.tbody`
     height: 100%;
     color: ${colors.darkGray};
     font-family: "Nunito";
@@ -47,7 +53,7 @@ export const TableBody = styled.tbody`
     text-align: center;
 `
 
-export const TableRow = styled.tr`
+export const Row = styled.tr`
     &:hover {
         background-color: ${colors.lightGray};
     }
@@ -60,7 +66,7 @@ export const TableRow = styled.tr`
     }
 `
 
-export const TableName = styled.td`
+export const Name = styled.td`
     position: sticky;
     display: block;
     width: 200px;
