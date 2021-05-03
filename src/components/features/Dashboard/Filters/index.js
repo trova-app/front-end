@@ -5,6 +5,7 @@ import * as Styled from './style'
 
 import { clearAllFilters } from '../../../../redux/slices/filters'
 
+import PlayerTypeToggler from './PlayerTypeToggler'
 import Position from './Sections/lib/Position'
 import GamesPlayed from './Sections/lib/GamesPlayed'
 import AtBats from './Sections/lib/AtBats'
@@ -28,6 +29,7 @@ const Filters = ({ clearAllFilters }) => {
         <Styled.Container>
             <Styled.Header>Filters</Styled.Header>
             <Styled.ClearFilters onClick={() => clearAllFilters()}>Clear filters</Styled.ClearFilters>
+            <PlayerTypeToggler />
             <Styled.Scrollable>
                 <Position />
                 <GamesPlayed />
