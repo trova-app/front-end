@@ -1,23 +1,23 @@
-import { useState } from 'react'
 import { connect } from 'react-redux'
 
 import * as Styled from './style'
 
-const PlayerTypeToggler = ({ ...props }) => {
-    const [value, setValue] = useState("Pitchers")
+import { setPitcher } from '../../../../../redux/slices/filters'
+
+const PlayerTypeToggler = ({ isShowingPitchers, setPitcher }) => {
 
     return (
         <Styled.Wrapper>
-            <Styled.HighlighterBox value={value} />
+            <Styled.HighlighterBox value={isShowingPitchers} />
             <Styled.Pitchers
-                onClick={() => setValue("Pitchers")}
-                value={value}
+                onClick={() => setPitcher(true)}
+                value={isShowingPitchers}
             >
                 Pitchers
                 </Styled.Pitchers>
             <Styled.Hitters
-                onClick={() => setValue("Hitters")}
-                value={value}
+                onClick={() => setPitcher(false)}
+                value={isShowingPitchers}
             >
                 Hitters
             </Styled.Hitters>
@@ -27,6 +27,8 @@ const PlayerTypeToggler = ({ ...props }) => {
 }
 
 export default connect(
-    null,
-    null
+    state => ({
+        isShowingPitchers: state.filters.positions.P
+    }),
+    { setPitcher }
 )(PlayerTypeToggler)

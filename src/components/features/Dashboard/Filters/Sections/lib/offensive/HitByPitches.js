@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const HitByPitches = ({ hitByPitches, setBounds }) => {
+const HitByPitches = ({ hitByPitches, setOffensiveBounds }) => {
     const [values, setValues] = useState(hitByPitches)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const HitByPitches = ({ hitByPitches, setBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "hitByPitches",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const HitByPitches = ({ hitByPitches, setBounds }) => {
 
 export default connect(
     state => ({
-        hitByPitches: state.filters.hitByPitches
+        hitByPitches: state.filters.offensiveFilters.hitByPitches
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(HitByPitches)

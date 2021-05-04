@@ -42,7 +42,7 @@ export const ClearFilters = styled.button`
 
 export const Scrollable = styled.div`
     width: 100%;
-    height: 100%;
+    height: 96%;
     overflow-x: visible;
     overflow-y: auto;
 `

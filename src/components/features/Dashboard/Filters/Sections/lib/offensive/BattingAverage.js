@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const BattingAverage = ({ battingAverage, setBounds }) => {
+const BattingAverage = ({ battingAverage, setOffensiveBounds }) => {
     const [values, setValues] = useState(battingAverage)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const BattingAverage = ({ battingAverage, setBounds }) => {
                 rangeMax={1}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "battingAverage",
                     value: values
                 })}
@@ -32,7 +32,7 @@ const BattingAverage = ({ battingAverage, setBounds }) => {
 
 export default connect(
     state => ({
-        battingAverage: state.filters.battingAverage
+        battingAverage: state.filters.offensiveFilters.battingAverage
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(BattingAverage)

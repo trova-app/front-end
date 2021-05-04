@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const HighlighterBox = styled.div`
     position: absolute;
     top: 0;
-    left: ${props => props.value === "Pitchers" ? "0" : "50%"};
+    left: ${props => props.value === true ? "0" : "50%"};
     width: 50%;
     height: 36px;
     border-radius: 12px;
@@ -28,7 +28,7 @@ export const Pitchers = styled.button`
     width: 50%;
     border: none;
     background-color: transparent;
-    color: ${props => props.value === "Pitchers" ? colors.white : colors.gray};
+    color: ${props => props.value === true ? colors.white : colors.gray};
     font-family: "Nunito";
     font-size: 18px;
     cursor: pointer;
@@ -45,7 +45,7 @@ export const Hitters = styled.button`
     width: 50%;
     border: none;
     background-color: transparent;
-    color: ${props => props.value === "Hitters" ? colors.white : colors.gray};
+    color: ${props => props.value === false ? colors.white : colors.gray};
     font-family: "Nunito";
     font-size: 18px;
     cursor: pointer;

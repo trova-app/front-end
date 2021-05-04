@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const Strikeouts = ({ strikeouts, setBounds }) => {
+const Strikeouts = ({ strikeouts, setOffensiveBounds }) => {
     const [values, setValues] = useState(strikeouts)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Strikeouts = ({ strikeouts, setBounds }) => {
                 rangeMax={250}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "strikeouts",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const Strikeouts = ({ strikeouts, setBounds }) => {
 
 export default connect(
     state => ({
-        strikeouts: state.filters.strikeouts
+        strikeouts: state.filters.offensiveFilters.strikeouts
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(Strikeouts)

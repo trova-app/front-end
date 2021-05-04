@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const OnBasePlusSlugging = ({ onBasePlusSlugging, setBounds }) => {
+const OnBasePlusSlugging = ({ onBasePlusSlugging, setOffensiveBounds }) => {
     const [values, setValues] = useState(onBasePlusSlugging)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const OnBasePlusSlugging = ({ onBasePlusSlugging, setBounds }) => {
                 rangeMax={2}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "onBasePlusSlugging",
                     value: values
                 })}
@@ -32,7 +32,7 @@ const OnBasePlusSlugging = ({ onBasePlusSlugging, setBounds }) => {
 
 export default connect(
     state => ({
-        onBasePlusSlugging: state.filters.onBasePlusSlugging
+        onBasePlusSlugging: state.filters.offensiveFilters.onBasePlusSlugging
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(OnBasePlusSlugging)

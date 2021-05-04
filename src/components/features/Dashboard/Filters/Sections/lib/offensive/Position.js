@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setPosition } from '../../../../../../redux/slices/filters'
+import { setPosition } from '../../../../../../../redux/slices/filters'
 
-import SectionContainer from '../index'
-import Checkbox from '../../../../../shared/Checkbox'
+import SectionContainer from '../../index'
+import Checkbox from '../../../../../../shared/Checkbox'
 
 const positionsArray = [
     {

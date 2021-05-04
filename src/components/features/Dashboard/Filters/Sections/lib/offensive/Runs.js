@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const Runs = ({ runs, setBounds }) => {
+const Runs = ({ runs, setOffensiveBounds }) => {
     const [values, setValues] = useState(runs)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Runs = ({ runs, setBounds }) => {
                 rangeMax={150}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "runs",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const Runs = ({ runs, setBounds }) => {
 
 export default connect(
     state => ({
-        runs: state.filters.runs
+        runs: state.filters.offensiveFilters.runs
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(Runs)

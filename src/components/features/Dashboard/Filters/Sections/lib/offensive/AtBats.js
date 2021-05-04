@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const AtBats = ({ atBats, setBounds }) => {
+const AtBats = ({ atBats, setOffensiveBounds }) => {
     const [values, setValues] = useState(atBats)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const AtBats = ({ atBats, setBounds }) => {
                 rangeMax={350}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "atBats",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const AtBats = ({ atBats, setBounds }) => {
 
 export default connect(
     state => ({
-        atBats: state.filters.atBats
+        atBats: state.filters.offensiveFilters.atBats
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(AtBats)

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
 
-const Hits = ({ hits, setBounds }) => {
+const Hits = ({ hits, setPitcherBounds }) => {
     const [values, setValues] = useState(hits)
 
     useEffect(() => {
@@ -17,10 +17,10 @@ const Hits = ({ hits, setBounds }) => {
             <RangeInput
                 step={1}
                 rangeMin={0}
-                rangeMax={250}
+                rangeMax={1000}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setPitcherBounds({
                     key: "hits",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const Hits = ({ hits, setBounds }) => {
 
 export default connect(
     state => ({
-        hits: state.filters.hits
+        hits: state.filters.pitcherFilters.hits
     }),
-    { setBounds }
+    { setPitcherBounds }
 )(Hits)

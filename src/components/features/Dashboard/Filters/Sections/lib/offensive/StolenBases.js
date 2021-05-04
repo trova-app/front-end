@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const StolenBases = ({ stolenBases, setBounds }) => {
+const StolenBases = ({ stolenBases, setOffensiveBounds }) => {
     const [values, setValues] = useState(stolenBases)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const StolenBases = ({ stolenBases, setBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "stolenBases",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const StolenBases = ({ stolenBases, setBounds }) => {
 
 export default connect(
     state => ({
-        stolenBases: state.filters.stolenBases
+        stolenBases: state.filters.offensiveFilters.stolenBases
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(StolenBases)

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import SectionContainer from '../index'
-import RangeInput from '../../../../../shared/RangeInput'
+import SectionContainer from '../../index'
+import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setBounds } from '../../../../../../redux/slices/filters'
+import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
 
-const GamesPlayed = ({ gamesPlayed, setBounds }) => {
+const GamesPlayed = ({ gamesPlayed, setOffensiveBounds }) => {
     const [values, setValues] = useState(gamesPlayed)
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const GamesPlayed = ({ gamesPlayed, setBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setBounds({
+                setFinalValues={() => setOffensiveBounds({
                     key: "gamesPlayed",
                     value: values
                 })}
@@ -31,7 +31,7 @@ const GamesPlayed = ({ gamesPlayed, setBounds }) => {
 
 export default connect(
     state => ({
-        gamesPlayed: state.filters.gamesPlayed
+        gamesPlayed: state.filters.offensiveFilters.gamesPlayed
     }),
-    { setBounds }
+    { setOffensiveBounds }
 )(GamesPlayed)
