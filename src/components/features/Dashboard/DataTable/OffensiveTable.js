@@ -107,7 +107,7 @@ const DataTable = ({
                         })
 
                         .sort((a, b) => {
-                            if (["lastName", "Team"].includes(sort.column)) {
+                            if (["lastName", "Team", "position"].includes(sort.column)) {
                                 if (sort.order === "DESC") {
                                     if (a[sort.column] < b[sort.column]) {
                                         return -1

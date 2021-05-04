@@ -68,13 +68,12 @@ const filterSlice = createSlice({
     reducers: {
         setPitcherSort: {
             reducer(state, action) {
-
-                if (state.pitcher.sort.column === action.payload && state.pitcher.sort.order === "ASC") {
-                    state.pitcher.sort.order = "DESC"
-                } else if (state.pitcher.sort.column === action.payload) {
-                    state.sort.order = "ASC"
+                if (state.sort.pitcher.column === action.payload && state.sort.pitcher.order === "ASC") {
+                    state.sort.pitcher.order = "DESC"
+                } else if (state.sort.pitcher.column === action.payload) {
+                    state.sort.pitcher.order = "ASC"
                 } else {
-                    state.pitcher.sort = {
+                    state.sort.pitcher = {
                         column: action.payload,
                         order: "DESC"
                     }
@@ -84,12 +83,12 @@ const filterSlice = createSlice({
         setOffensiveSort: {
             reducer(state, action) {
 
-                if (state.offensive.sort.column === action.payload && state.offensive.sort.order === "ASC") {
-                    state.offensive.sort.order = "DESC"
-                } else if (state.offensive.sort.column === action.payload) {
-                    state.offensive.sort.order = "ASC"
+                if (state.sort.offensive.column === action.payload && state.sort.offensive.order === "ASC") {
+                    state.sort.offensive.order = "DESC"
+                } else if (state.sort.offensive.column === action.payload) {
+                    state.sort.offensive.order = "ASC"
                 } else {
-                    state.offensive.sort = {
+                    state.sort.offensive = {
                         column: action.payload,
                         order: "DESC"
                     }
