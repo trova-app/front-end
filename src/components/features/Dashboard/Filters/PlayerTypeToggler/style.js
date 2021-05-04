@@ -10,11 +10,12 @@ export const Wrapper = styled.div`
 
 export const HighlighterBox = styled.div`
     position: absolute;
-    top: 0;
-    left: ${props => props.value === true ? "0" : "50%"};
+    top: 50%;
+    transform: translateY(-50%);
+    left: ${props => props.value === true ? "1%" : "49%"};
     width: 50%;
-    height: 36px;
-    border-radius: 12px;
+    height: 30px;
+    border-radius: 10px;
     background-color: ${colors.lightBlue};
     transition: .2s;
 `
