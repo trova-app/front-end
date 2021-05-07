@@ -3,9 +3,12 @@ import { colors } from '../../../../../styles/colors'
 
 export const Wrapper = styled.div`
     position: relative;
+    width: 100%;
     height: 36px;
+    margin: 0 auto;
+    margin-bottom: 5%;
     border-radius: 12px;
-    background-color: ${colors.lightGray};
+    background-color: ${colors.lightestBlue};
 `
 
 export const HighlighterBox = styled.div`
@@ -15,7 +18,7 @@ export const HighlighterBox = styled.div`
     left: ${props => props.value === true ? "1%" : "49%"};
     width: 50%;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 14px;
     background-color: ${colors.lightBlue};
     transition: .2s;
 `

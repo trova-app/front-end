@@ -6,7 +6,7 @@ import { colors } from '../../../../../styles/colors'
 import SVG from '../../../../svg'
 
 const Section = ({ header, children }) => {
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <Styled.Container isOpen={isOpen}>
@@ -17,12 +17,13 @@ const Section = ({ header, children }) => {
                     style={{
                         position: "absolute",
                         top: "45%",
-                        right: "5%",
-                        width: "5%",
+                        right: "10%",
+                        width: "6%",
                         transform: `rotate(${isOpen ? "0deg" : "180deg"})`
                     }} />
             </Styled.Header>
             {isOpen ? children : null}
+            <Styled.HR isOpen={isOpen} />
         </Styled.Container>
     )
 }

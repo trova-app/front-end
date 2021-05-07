@@ -16,7 +16,9 @@ const TwoThumbs = ({
             style={{
                 display: 'flex',
                 justifyContent: 'center',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                paddingLeft: "2px",
+                paddingRight: "24px"
             }}
         >
             <Range

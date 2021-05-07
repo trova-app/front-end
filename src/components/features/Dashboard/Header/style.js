@@ -7,8 +7,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 15vh;
-    padding: 0 2.5%;
+    height: 18vh;
+    padding: 1.5% 3%;
 `
 
 export const SearchForm = styled.form`
@@ -26,7 +26,7 @@ export const SearchInput = styled.input`
     padding: 12px 24px;
     border-radius: 24px;
     border: 1px solid rgba(68, 113, 209, .25);
-    background-color: ${colors.lightGray};
+    background-color: ${colors.lightestBlue};
     color: ${colors.lightBlue};
     font-family: "Nunito";
     font-size: 18px;
@@ -42,13 +42,13 @@ export const SearchInput = styled.input`
 export const SearchButton = styled.button`
     appearance: none;
     position: absolute;
-    right: 0;
-    height: 48px;
-    padding-left: 14px;
-    padding-right: 18px;
+    right: 4px;
+    width: 40px;
+    height: 40px;
     border: none;
-    border-top-right-radius: 24px;
-    border-bottom-right-radius: 24px;
+    border-radius: 50%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     background-color: ${props => props.hasSearchTerm ? colors.lightBlue : "transparent"};
     cursor: pointer;
     transition: .2s;
@@ -65,4 +65,10 @@ export const Button = styled.div`
     font-weight: 700;
     letter-spacing: 4px;
     cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        background-color: ${colors.lightBlue};
+        color: ${colors.white};
+    }
 `

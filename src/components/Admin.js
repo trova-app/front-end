@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 // auth.tokens.idToken.payload["cognito:groups"].includes("Admin")
 // Do this at the router level!
 
+import SignUp from './Signup'
+
 const Admin = () => {
     const history = useHistory()
 
@@ -21,7 +23,7 @@ const Admin = () => {
             backgroundColor: "green",
             zIndex: 999
         }}>
-            Make something great with the AdminView component here!
+            <SignUp />
             <button onClick={() => history.push("/dashboard")}>Close</button>
         </div>
     )

@@ -39,12 +39,12 @@ const Component = ({
                 />
                 <Styled.SearchButton hasSearchTerm={!!search}>
                     <SVG.Search
-                        style={{ width: "32px" }}
+                        style={{ width: "95%", position: "relative", left: "-2px" }}
                         strokeColor={!!search ? colors.white : colors.lightBlue}
                     />
                 </Styled.SearchButton>
             </Styled.SearchForm>
-            {idToken["cognito:groups"].includes("Admin") &&
+            {idToken["cognito:groups"]?.includes("Admin") &&
                 <Styled.Button
                     onClick={() => history.push("/admin")}
                     style={{ marginRight: "2%" }}

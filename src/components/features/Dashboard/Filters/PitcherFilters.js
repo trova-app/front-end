@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import * as Styled from './style'
 
-
 import Appearances from './Sections/lib/pitcher/Appearances'
 import CompleteGames from './Sections/lib/pitcher/CompleteGames'
 import EarnedRunAverage from './Sections/lib/pitcher/EarnedRunAverage'
@@ -26,6 +25,7 @@ const Filters = ({ ...props }) => {
     return (
 
         <Styled.Scrollable>
+            <Styled.HR />
             <Appearances />
             <CompleteGames />
             <EarnedRunAverage />

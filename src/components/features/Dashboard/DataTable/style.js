@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import { colors } from '../../../../styles/colors'
 
 export const Container = styled.div`
-    position: relative;
-    width: 80vw;
-    max-height: 100%;
-    margin-left: 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 78.5vw;
+    max-height: 94%;
     overflow: auto;
 `
 
@@ -19,7 +20,7 @@ export const Header = styled.thead`
     color: ${colors.gray};
     font-family: "Nunito";
     font-weight: 400;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     overflow: auto;
 
@@ -27,29 +28,25 @@ export const Header = styled.thead`
         th {
             position: sticky;
             top: 0;
-            width: 100px;
+            width: 75px;
             background-color: ${colors.white};
             cursor: pointer;
             user-select: none;
             overflow: hidden;
 
             &:hover {
-                background-color: ${colors.lightGray};
+                background-color: ${colors.lightestBlue};
             }
 
             &:first-of-type {
                 position: sticky;
                 left: 0;
-                width: 200px;
+                width: 175px;
                 z-index: 1;
             }
 
             &:nth-of-type(2) {
-                width: 200px;
-            }
-
-            &:nth-of-type(3) {
-                width: 150px;
+                width: 175px;
             }
         }
     }
@@ -59,17 +56,17 @@ export const Body = styled.tbody`
     height: 100%;
     color: ${colors.darkGray};
     font-family: "Nunito";
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 `
 
 export const Row = styled.tr`
     &:hover {
-        background-color: ${colors.lightGray};
+        background-color: ${colors.lightestBlue};
     }
 
     td {
-    border-bottom: 1px solid ${colors.lightGray};
+    border-bottom: 1px solid ${colors.lightestBlue};
     line-height: 48px;
     white-space: nowrap;
     cursor: default;
@@ -83,9 +80,8 @@ export const Name = styled.td`
     left: 0;
     padding-left: 16px;
     background-color: ${colors.white};
-    text-align: left;
 
     &:hover {
-        background-color: ${colors.lightGray};
+        background-color: ${colors.lightestBlue};
     }
 `

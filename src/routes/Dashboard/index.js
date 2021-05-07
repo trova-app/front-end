@@ -10,16 +10,15 @@ import Filters from '../../components/features/Dashboard/Filters'
 import DataTable from '../../components/features/Dashboard/DataTable'
 
 const Container = styled.div`
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    height: 85vh;
+    height: 82vh;
 `
 
 const Dashboard = ({ ...props }) => {
-
-
     return (
         <FullScreen>
             <Header />

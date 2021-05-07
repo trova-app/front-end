@@ -24,6 +24,7 @@ import HitByPitches from './Sections/lib/offensive/HitByPitches'
 const Filters = ({ ...props }) => {
     return (
         <Styled.Scrollable>
+            <Styled.HR />
             <Position />
             <GamesPlayed />
             <AtBats />

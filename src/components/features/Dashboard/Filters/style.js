@@ -5,24 +5,21 @@ export const Container = styled.div`
     position: relative;
     width: 20vw;
     height: 100%;
-    padding-top: 48px;
-    padding-left: 2vw;
+    padding-left: 3vw;
 `
 
 export const Header = styled.h2`
-    position: absolute;
-    top: 2px;
-    left: 28px;
     height: 36px;
+    padding-left: 8px;
     color: ${colors.gray};
     font-family: "Nunito";
-    font-size: 24px;
+    font-size: 18px;
 `
 
 export const ClearFilters = styled.button`
     appearance: none;
     position: absolute;
-    top: 0;
+    top: -8px;
     right: 12px;
     padding: 8px;
     border: none;
@@ -30,7 +27,7 @@ export const ClearFilters = styled.button`
     background-color: transparent;
     color: ${colors.lightBlue};
     font-family: "Nunito";
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: .2s;
 
@@ -42,7 +39,17 @@ export const ClearFilters = styled.button`
 
 export const Scrollable = styled.div`
     width: 100%;
-    height: 96%;
+    height: 89.5%;
+    padding-top: 5%;
     overflow-x: visible;
     overflow-y: auto;
+`
+export const HR = styled.hr`
+    position: relative;
+    left: -1.5%;
+    width: 64.3%;
+    height: 1px;
+    margin: 0 auto;
+    border-width: 0;
+    background-color: ${colors.lightGrayOpacity20};
 `
