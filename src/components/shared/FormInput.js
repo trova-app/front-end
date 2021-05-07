@@ -20,4 +20,5 @@ const Input = styled.input`
 const FormInput = (props) => (
     <Input {...props} />
 )
+
 export default FormInput

@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import { colors } from '../../styles/colors'
 
 export const Header = styled.h1`
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
     color: ${colors.white};
     font-family: "Work Sans";
     font-weight: 600;
     font-size: 52px;
+
+    span {
+        color: ${colors.slateBlue}
+    }
 `
 
 export const P = styled.p`
@@ -21,16 +24,16 @@ export const P = styled.p`
 `
 
 export const Form = styled.form`
-    position: relative;
+
 `
 
 export const Submit = styled.button`
     position: absolute;
-    top: 22.5%;
+    top: 50%;
     right: 12.5%;
     appearance: none;
-    width: 245px;
-    padding: 24px;
+    width: 325px;
+    padding: 24px 35px;
     border: none;
     border-radius: 48px;
     background-color: ${props => props.isError ? colors.red : colors.slateBlue};
@@ -41,15 +44,6 @@ export const Submit = styled.button`
     letter-spacing: 4px;
     cursor: pointer;
     transition: .2s;
-`
-
-export const Error = styled.p`
-    height: 27px;
-    margin-bottom: 48px;
-    color: ${colors.red};
-    font-family: "Nunito";
-    font-weight: 700;
-    font-size: 20px;
 `
 
 export const AuxText = styled.span`

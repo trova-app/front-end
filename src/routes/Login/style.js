@@ -31,8 +31,8 @@ export const LoginError = styled.p`
 
 export const Submit = styled.button`
     position: absolute;
-    top: 50%;
-    right: 22.5%;
+    top: 42.5%;
+    right: 12.5%;
     appearance: none;
     width: 245px;
     padding: 24px 76px;

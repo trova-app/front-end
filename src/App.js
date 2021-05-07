@@ -14,6 +14,7 @@ import Login from './routes/Login'
 import ForgotPassword from './routes/ForgotPassword'
 import ResetPassword from './routes/ResetPassword'
 import Dashboard from './routes/Dashboard'
+import RequestAccess from './routes/RequestAccess'
 import ChangePassword from './components/ChangePassword'
 import Admin from './components/Admin'
 
@@ -43,6 +44,9 @@ const App = ({
           </Route>
           <Route path="/reset-password">
             <ResetPassword />
+          </Route>
+          <Route path="/request-access">
+            <RequestAccess />
           </Route>
           <ProtectedRoute auth={auth} path="/dashboard" component={Dashboard} />
           <ProtectedRoute auth={auth} path="/admin" component={Admin} />

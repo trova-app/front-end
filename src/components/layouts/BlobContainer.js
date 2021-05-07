@@ -22,9 +22,6 @@ const BlobContainer = ({ bannerComponent: BannerComponent, style, children }) =>
                     height: "80vh",
                     display: "flex",
                     alignItems: height / 1.59 > width ? "flex-start" : "center",
-                    position: "absolute",
-                    bottom: "5vh",
-                    left: width < 650 ? "-40px" : 0,
                 }}>
                 <SVG.TrovaLogo style={{
                     position: "fixed",
@@ -34,11 +31,15 @@ const BlobContainer = ({ bannerComponent: BannerComponent, style, children }) =>
                 }} />
                 {BannerComponent}
                 <SVG.Blob style={{
-                    width: "100%",
+                    width: "100vw",
                     minWidth: height * 1.59 || 0,
-                    height: "100%",
+                    height: "80vh",
                     zIndex: "-1",
-                    overflow: "visible"
+                    overflow: "visible",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
                 }} />
 
             </div>
@@ -47,16 +48,20 @@ const BlobContainer = ({ bannerComponent: BannerComponent, style, children }) =>
                     width: "100vw",
                     height: "80vh",
                     position: "absolute",
-                    bottom: "5vh"
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
                 }}>
                 <div
                     style={{
                         width: height,
+                        maxWidth: width,
                         height: "100%",
-                        marginTop: "0",
-                        marginBottom: "0",
-                        marginLeft: width < 1150 ? "20%" : "auto",
-                        marginRight: "auto",
+                        padding: "0 20px",
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
                         ...style
                     }}>
                     {children}

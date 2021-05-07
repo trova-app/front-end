@@ -43,7 +43,7 @@ const Component = ({ ...props }) => {
         >
             <Styled.Header>Forgot Password</Styled.Header>
             <Styled.P>Enter the email address associated with your account and we’ll send you a message with instructions to reset your password.</Styled.P>
-            <form onSubmit={onSubmit}>
+            <Styled.Form onSubmit={onSubmit}>
                 <Label htmlFor="email">Email</Label>
                 <Input
                     name="email"
@@ -55,7 +55,7 @@ const Component = ({ ...props }) => {
                     }}
                 />
                 <Styled.Submit isError={error}>SEND EMAIL</Styled.Submit>
-            </form>
+            </Styled.Form>
             <Styled.Error>{error}</Styled.Error>
             <p>
                 <Styled.AuxText>Already have a code?</Styled.AuxText>

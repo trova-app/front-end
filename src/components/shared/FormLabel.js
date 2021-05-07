@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { colors } from '../../styles/colors'
 
@@ -16,6 +16,11 @@ const FormLabel = ({ htmlFor, children, ...props }) => {
     return (
         <Label htmlFor={htmlFor}>{children}</Label>
     )
+}
+
+FormLabel.propTypes = {
+    htmlFor: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired
 }
 
 export default FormLabel
