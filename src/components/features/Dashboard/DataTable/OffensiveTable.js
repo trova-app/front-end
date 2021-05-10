@@ -36,7 +36,7 @@ const DataTable = ({
                             [
                                 ["lastName", "Name"],
                                 ["Team"],
-                                ["position", "Position"],
+                                ["position", "Pos"],
                                 ["GP", "GP"],
                                 ["AB"],
                                 ["AVG"],
@@ -63,14 +63,14 @@ const DataTable = ({
                                         {
                                             sort.column === elem[0]
                                             &&
-                                            <SVG.Carat
+                                            <SVG.Triangle
                                                 fill={colors.gray}
                                                 style={{
                                                     position: "absolute",
-                                                    top: "10px",
+                                                    top: "6px",
                                                     right: "6px",
                                                     width: "16px",
-                                                    transform: sort.order === "DESC" && "rotate(180deg)"
+                                                    transform: sort.order === "ASC" && "rotate(180deg)"
                                                 }}
                                             />
                                         }
