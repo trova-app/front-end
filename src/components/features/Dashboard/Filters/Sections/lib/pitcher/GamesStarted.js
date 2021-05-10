@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const GamesStarted = ({ gamesStarted, setPitcherBounds }) => {
+const GamesStarted = ({ gamesStarted, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(gamesStarted)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const GamesStarted = ({ gamesStarted, setPitcherBounds }) => {
                 rangeMax={56}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "gamesStarted",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "gamesStarted",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         gamesStarted: state.filters.pitcherFilters.gamesStarted
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(GamesStarted)

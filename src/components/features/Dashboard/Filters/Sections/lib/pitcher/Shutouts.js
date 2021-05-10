@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const Shutouts = ({ shutouts, setPitcherBounds }) => {
+const Shutouts = ({ shutouts, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(shutouts)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const Shutouts = ({ shutouts, setPitcherBounds }) => {
                 rangeMax={56}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "shutouts",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "shutouts",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         shutouts: state.filters.pitcherFilters.shutouts
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(Shutouts)

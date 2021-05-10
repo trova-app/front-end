@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const Walks = ({ walks, setOffensiveBounds }) => {
+const Walks = ({ walks, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(walks)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const Walks = ({ walks, setOffensiveBounds }) => {
                 rangeMax={250}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "walks",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "walks",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         walks: state.filters.offensiveFilters.walks
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters }
 )(Walks)

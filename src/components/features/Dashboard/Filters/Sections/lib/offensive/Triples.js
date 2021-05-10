@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const Triples = ({ triples, setOffensiveBounds }) => {
+const Triples = ({ triples, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(triples)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const Triples = ({ triples, setOffensiveBounds }) => {
                 rangeMax={250}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "triples",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "triples",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         triples: state.filters.offensiveFilters.triples
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters }
 )(Triples)

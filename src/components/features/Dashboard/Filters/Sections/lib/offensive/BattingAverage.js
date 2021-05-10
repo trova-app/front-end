@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const BattingAverage = ({ battingAverage, setOffensiveBounds }) => {
+const BattingAverage = ({ battingAverage, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(battingAverage)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const BattingAverage = ({ battingAverage, setOffensiveBounds }) => {
                 rangeMax={1}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "battingAverage",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "battingAverage",
+                        value: values
+                    })
+                }}
                 toFixed={3}
             />
         </SectionContainer>
@@ -34,5 +37,5 @@ export default connect(
     state => ({
         battingAverage: state.filters.offensiveFilters.battingAverage
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters }
 )(BattingAverage)

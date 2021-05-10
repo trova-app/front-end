@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const CaughtStealing = ({ caughtStealing, setOffensiveBounds }) => {
+const CaughtStealing = ({ caughtStealing, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(caughtStealing)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const CaughtStealing = ({ caughtStealing, setOffensiveBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "caughtStealing",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "caughtStealing",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         caughtStealing: state.filters.offensiveFilters.caughtStealing
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters }
 )(CaughtStealing)

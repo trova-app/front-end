@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const EarnedRunAverage = ({ earnedRunAverage, setPitcherBounds }) => {
+const EarnedRunAverage = ({ earnedRunAverage, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(earnedRunAverage)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const EarnedRunAverage = ({ earnedRunAverage, setPitcherBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "earnedRunAverage",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "earnedRunAverage",
+                        value: values
+                    })
+                }}
                 toFixed={2}
             />
         </SectionContainer>
@@ -34,5 +37,5 @@ export default connect(
     state => ({
         earnedRunAverage: state.filters.pitcherFilters.earnedRunAverage
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(EarnedRunAverage)

@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const OnBasePercentage = ({ onBasePercentage, setOffensiveBounds }) => {
+const OnBasePercentage = ({ onBasePercentage, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(onBasePercentage)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const OnBasePercentage = ({ onBasePercentage, setOffensiveBounds }) => {
                 rangeMax={1}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "onBasePercentage",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "onBasePercentage",
+                        value: values
+                    })
+                }}
                 toFixed={3}
             />
         </SectionContainer>
@@ -34,5 +37,5 @@ export default connect(
     state => ({
         onBasePercentage: state.filters.offensiveFilters.onBasePercentage
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters }
 )(OnBasePercentage)
