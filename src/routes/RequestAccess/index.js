@@ -23,12 +23,11 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
 
         fetch(`https://ki009fkwji.execute-api.us-west-1.amazonaws.com/dev/contact`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
             body: JSON.stringify({ name, email })
         })
-            .catch(err => {
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
                 authenticate("tester@inthezone.dev", "AlphaTest!1")
                     .then(({ session, attributes }) => {
                         setUserAttributes(attributes)
@@ -52,6 +51,7 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
                         console.error("Login Error: ", err)
                     })
             })
+            .catch(err => console.error(err))
     }
 
     return (
