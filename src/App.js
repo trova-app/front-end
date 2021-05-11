@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 import { useSession } from './hooks/useSession'
-import { setTokens, setUserAttributes } from './redux/slices/auth'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+
+import { setTokens, setUserAttributes } from './redux/slices/auth'
 
 import GlobalStyles from './styles/GlobalStyles'
 import ProtectedRoute from './components/shared/ProtectedRoute'
@@ -26,7 +28,7 @@ const App = ({
   useSession(setTokens, setUserAttributes)
 
   return (
-    <>
+    <HelmetProvider>
       <GlobalStyles />
       <Router>
         <Switch>
@@ -52,7 +54,7 @@ const App = ({
           <ProtectedRoute auth={auth} path="/admin" component={Admin} />
         </Switch>
       </Router>
-    </>
+    </HelmetProvider>
   )
 }
 
