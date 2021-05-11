@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setOffensiveBounds } from '../../../../../../../redux/slices/filters'
+import { setOffensiveBounds, setIsDefaultFilters, } from '../../../../../../../redux/slices/filters'
 
-const GamesPlayed = ({ gamesPlayed, setOffensiveBounds }) => {
+const GamesPlayed = ({ gamesPlayed, setIsDefaultFilters, setOffensiveBounds }) => {
     const [values, setValues] = useState(gamesPlayed)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const GamesPlayed = ({ gamesPlayed, setOffensiveBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setOffensiveBounds({
-                    key: "gamesPlayed",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setOffensiveBounds({
+                        key: "gamesPlayed",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         gamesPlayed: state.filters.offensiveFilters.gamesPlayed
     }),
-    { setOffensiveBounds }
+    { setOffensiveBounds, setIsDefaultFilters, }
 )(GamesPlayed)

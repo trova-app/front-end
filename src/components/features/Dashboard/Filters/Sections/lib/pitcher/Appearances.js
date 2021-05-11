@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const Appearances = ({ appearances, setPitcherBounds }) => {
+const Appearances = ({ appearances, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(appearances)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const Appearances = ({ appearances, setPitcherBounds }) => {
                 rangeMax={200}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "appearances",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "appearances",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         appearances: state.filters.pitcherFilters.appearances
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(Appearances)

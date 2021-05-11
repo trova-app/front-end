@@ -11,6 +11,7 @@ const initialState = {
             order: "DESC"
         }
     },
+    isDefaultFilters: true,
     positions: {
         "P": true,
         "C": true,
@@ -115,6 +116,11 @@ const filterSlice = createSlice({
                 state.offensiveFilters[action.payload.key] = action.payload.value
             }
         },
+        setIsDefaultFilters: {
+            reducer(state, action) {
+                state.isDefaultFilters = action.payload
+            }
+        },
         clearAllFilters: {
             reducer(state, action) {
                 state.positions = {
@@ -179,6 +185,7 @@ export const {
     setPosition,
     setPitcherBounds,
     setOffensiveBounds,
+    setIsDefaultFilters,
     clearAllFilters
 } = filterSlice.actions
 

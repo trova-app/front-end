@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setPosition } from '../../../../../../../redux/slices/filters'
+import { setPosition, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
 import SectionContainer from '../../index'
 import Checkbox from '../../../../../../shared/Checkbox'
@@ -41,7 +41,7 @@ const positionsArray = [
     },
 ]
 
-const Position = ({ positions, setPosition }) => (
+const Position = ({ positions, setIsDefaultFilters, setPosition }) => (
     <SectionContainer header="Position">
         {positionsArray.map(({ label, abbreviation }) => (
             <Checkbox
@@ -49,7 +49,10 @@ const Position = ({ positions, setPosition }) => (
                 label={label}
                 value={abbreviation}
                 isSelected={positions[abbreviation]}
-                onClick={() => setPosition(abbreviation)}
+                onClick={() => {
+                    setIsDefaultFilters(false)
+                    setPosition(abbreviation)
+                }}
             />
 
         ))}
@@ -60,5 +63,5 @@ export default connect(
     state => ({
         positions: state.filters.positions
     }),
-    { setPosition }
+    { setPosition, setIsDefaultFilters }
 )(Position)

@@ -28,7 +28,7 @@ export const Header = styled.thead`
         th {
             position: sticky;
             top: 0;
-            width: 75px;
+            width: 93px;
             background-color: ${colors.white};
             cursor: pointer;
             user-select: none;

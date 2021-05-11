@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const EarnedRuns = ({ earnedRuns, setPitcherBounds }) => {
+const EarnedRuns = ({ earnedRuns, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(earnedRuns)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const EarnedRuns = ({ earnedRuns, setPitcherBounds }) => {
                 rangeMax={250}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "earnedRuns",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "earnedRuns",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         earnedRuns: state.filters.pitcherFilters.earnedRuns
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(EarnedRuns)

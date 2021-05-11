@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import SectionContainer from '../../index'
 import RangeInput from '../../../../../../shared/RangeInput'
 
-import { setPitcherBounds } from '../../../../../../../redux/slices/filters'
+import { setPitcherBounds, setIsDefaultFilters } from '../../../../../../../redux/slices/filters'
 
-const WildPitches = ({ wildPitches, setPitcherBounds }) => {
+const WildPitches = ({ wildPitches, setIsDefaultFilters, setPitcherBounds }) => {
     const [values, setValues] = useState(wildPitches)
 
     useEffect(() => {
@@ -20,10 +20,13 @@ const WildPitches = ({ wildPitches, setPitcherBounds }) => {
                 rangeMax={100}
                 values={values}
                 setValues={setValues}
-                setFinalValues={() => setPitcherBounds({
-                    key: "wildPitches",
-                    value: values
-                })}
+                setFinalValues={() => {
+                    setIsDefaultFilters(false)
+                    setPitcherBounds({
+                        key: "wildPitches",
+                        value: values
+                    })
+                }}
             />
         </SectionContainer>
     )
@@ -33,5 +36,5 @@ export default connect(
     state => ({
         wildPitches: state.filters.pitcherFilters.wildPitches
     }),
-    { setPitcherBounds }
+    { setPitcherBounds, setIsDefaultFilters }
 )(WildPitches)

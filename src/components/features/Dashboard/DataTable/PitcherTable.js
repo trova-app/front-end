@@ -36,21 +36,21 @@ const DataTable = ({
                                 ["lastName", "Name"],
                                 ["Team"],
                                 ["APP"],
-                                ["BB"],
-                                ["CG"],
-                                ["ER"],
-                                ["ERA"],
                                 ["GS"],
-                                ["H"],
-                                ["HP"],
-                                ["IP"],
-                                ["L"],
-                                ["OBA"],
-                                ["R"],
-                                ["SHO"],
-                                ["SO"],
-                                ["SV"],
                                 ["W"],
+                                ["L"],
+                                ["SV"],
+                                ["IP"],
+                                ["ERA"],
+                                ["ER"],
+                                ["R"],
+                                ["H"],
+                                ["OBA"],
+                                ["SO"],
+                                ["BB"],
+                                ["HP"],
+                                ["CG"],
+                                ["SHO"],
                                 ["WP"]
                             ]
                                 .map(elem => {
@@ -63,14 +63,14 @@ const DataTable = ({
                                             {
                                                 sort.column === elem[0]
                                                 &&
-                                                <SVG.Carat
+                                                <SVG.Triangle
                                                     fill={colors.gray}
                                                     style={{
                                                         position: "absolute",
-                                                        top: "10px",
+                                                        top: "6px",
                                                         right: "6px",
                                                         width: "16px",
-                                                        transform: sort.order === "DESC" && "rotate(180deg)"
+                                                        transform: sort.order === "ASC" && "rotate(180deg)"
                                                     }}
                                                 />
                                             }
@@ -146,21 +146,21 @@ const DataTable = ({
                                     <Styled.Name>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.Name>
                                     <td>{elem.Team}</td>
                                     <td>{elem.APP}</td>
-                                    <td>{elem.BB}</td>
-                                    <td>{elem.CG}</td>
-                                    <td>{elem.ER}</td>
-                                    <td>{elem.ERA.toFixed(2)}</td>
                                     <td>{elem.GS}</td>
-                                    <td>{elem.H}</td>
-                                    <td>{elem.HP}</td>
-                                    <td>{elem.IP.toFixed(1)}</td>
-                                    <td>{elem.L}</td>
-                                    <td>{elem.OBA.toFixed(3)}</td>
-                                    <td>{elem.R}</td>
-                                    <td>{elem.SHO}</td>
-                                    <td>{elem.SO}</td>
-                                    <td>{elem.SV}</td>
                                     <td>{elem.W}</td>
+                                    <td>{elem.L}</td>
+                                    <td>{elem.SV}</td>
+                                    <td>{elem.IP.toFixed(1)}</td>
+                                    <td>{elem.ERA.toFixed(2)}</td>
+                                    <td>{elem.ER}</td>
+                                    <td>{elem.R}</td>
+                                    <td>{elem.H}</td>
+                                    <td>{elem.OBA.toFixed(3)}</td>
+                                    <td>{elem.SO}</td>
+                                    <td>{elem.BB}</td>
+                                    <td>{elem.HP}</td>
+                                    <td>{elem.CG}</td>
+                                    <td>{elem.SHO}</td>
                                     <td>{elem.WP}</td>
                                 </Styled.Row>
                             )

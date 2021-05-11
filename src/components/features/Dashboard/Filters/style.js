@@ -25,15 +25,15 @@ export const ClearFilters = styled.button`
     border: none;
     border-radius: 12px;
     background-color: transparent;
-    color: ${colors.lightBlue};
+    color: ${props => props.isDefaultFilters ? "transparent" : colors.lightBlue};
     font-family: "Nunito";
     font-size: 16px;
-    cursor: pointer;
+    cursor: ${props => props.isDefaultFilters ? "initial" : "pointer"};
     transition: .2s;
 
     &:hover {
-        background-color: ${colors.lightBlue};
-        color: ${colors.white};
+        background-color: ${props => props.isDefaultFilters ? "transparent" : colors.lightBlue};
+        color: ${props => props.isDefaultFilters ? "transparent" : colors.white};
     }
 `
 

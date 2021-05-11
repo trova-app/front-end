@@ -3,17 +3,26 @@ import { connect } from 'react-redux'
 
 import * as Styled from './style'
 
-import { clearAllFilters } from '../../../../redux/slices/filters'
+import { clearAllFilters, setIsDefaultFilters } from '../../../../redux/slices/filters'
 
 import PlayerTypeToggler from './PlayerTypeToggler'
 import PitcherFilters from './PitcherFilters'
 import OffensiveFilters from './OffensiveFilters'
 
-const Filters = ({ filters, clearAllFilters }) => {
+const Filters = ({ filters, isDefaultFilters, setIsDefaultFilters, clearAllFilters }) => {
+
     return (
         <Styled.Container>
             <Styled.Header>Filters</Styled.Header>
-            <Styled.ClearFilters onClick={() => clearAllFilters()}>Clear filters</Styled.ClearFilters>
+            <Styled.ClearFilters
+                isDefaultFilters={isDefaultFilters}
+                disabled={isDefaultFilters}
+                onClick={() => {
+                    clearAllFilters()
+                    setIsDefaultFilters(true)
+                }}>
+                Clear filters
+                </Styled.ClearFilters>
             <PlayerTypeToggler />
             {filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />}
         </Styled.Container>
@@ -23,6 +32,7 @@ const Filters = ({ filters, clearAllFilters }) => {
 export default connect(
     state => ({
         filters: state.filters,
+        isDefaultFilters: state.filters.isDefaultFilters
     }),
-    { clearAllFilters }
+    { clearAllFilters, setIsDefaultFilters }
 )(Filters)
