@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import * as Styled from './style'
 import { colors } from '../../styles/colors'
 
@@ -104,7 +104,7 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
                 />
                 <Styled.Submit isError={!!error} type="submit">REQUEST<br />ACCESS</Styled.Submit>
             </Styled.Form>
-{/*
+            {/*
             <div>
                 <p>
                     <Styled.AuxText>Already registered?</Styled.AuxText>

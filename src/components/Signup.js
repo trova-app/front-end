@@ -13,8 +13,8 @@ const Signup = () => {
             email,
             password,
             [new CognitoUserAttribute({
-                Name: "custom:UserType",
-                Value: "user"
+                Name: "custom:role",
+                Value: "admin"
             })],
             null,
             (err, data) => {

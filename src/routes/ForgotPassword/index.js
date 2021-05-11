@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import * as Styled from './style'
 import { colors } from '../../styles/colors'
 import { initiateForgotPassword } from '../../auth/forgotPassword'
