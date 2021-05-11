@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import { authenticate } from '../../auth/authenticate'
 import { verifyEmail } from '../../auth/verifyEmail'
@@ -113,15 +114,17 @@ const SignupComponent = ({ auth, setTokens, setUserAttributes }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            paddingBottom: "10%"
         }}
             bannerComponent={
                 <p style={{
                     position: "fixed",
-                    top: "5vh",
+                    top: "3vh",
                     right: "5vw",
                     height: "10vh"
                 }}>
+                    <Helmet>
+                        <title>Trova - Login</title>
+                    </Helmet>
                     <Styled.AuxText color={colors.lightBlue}>Not registered yet?</Styled.AuxText>
                     <Styled.AuxLink to="/request-access" color={colors.slateBlue}>Request access.</Styled.AuxLink>
                 </p>

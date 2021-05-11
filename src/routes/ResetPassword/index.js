@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import * as Styled from './style'
 import { colors } from '../../styles/colors'
 import { changeForgottenPassword } from '../../auth/forgotPassword'
@@ -53,10 +54,13 @@ const Component = ({ ...props }) => {
             bannerComponent={
                 <p style={{
                     position: "fixed",
-                    top: "5vh",
+                    top: "3vh",
                     right: "5vw",
                     height: "10vh"
                 }}>
+                    <Helmet>
+                        <title>Trova - Reset Password</title>
+                    </Helmet>
                     <Styled.AuxText color={colors.lightBlue}>Need a new code?</Styled.AuxText>
                     <Styled.AuxLink to="/forgot-password" color={colors.slateBlue}>Request a new one.</Styled.AuxLink>
                 </p>

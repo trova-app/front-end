@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { colors } from '../../styles/colors'
 
 export const Header = styled.h1`
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     color: ${colors.white};
     font-family: "Work Sans";
     font-weight: 600;
@@ -14,7 +14,7 @@ export const Header = styled.h1`
 export const P = styled.p`
     width: 65%;
     color: ${colors.white};
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     font-family: "Nunito";
     font-weight: 400;
     font-size: 18px;
@@ -29,7 +29,6 @@ export const Submit = styled.button`
     top: 22.5%;
     right: 12.5%;
     appearance: none;
-    width: 245px;
     padding: 24px;
     border: none;
     border-radius: 48px;
@@ -45,7 +44,7 @@ export const Submit = styled.button`
 
 export const Error = styled.p`
     height: 27px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     color: ${colors.red};
     font-family: "Nunito";
     font-weight: 700;

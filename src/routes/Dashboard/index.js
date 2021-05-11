@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 
 import { logout } from '../../auth/logout'
 import { setTokens, setUserAttributes } from '../../redux/slices/auth'
@@ -21,6 +22,9 @@ const Container = styled.div`
 const Dashboard = ({ ...props }) => {
     return (
         <FullScreen>
+            <Helmet>
+                <title>Trova - Dashboard</title>
+            </Helmet>
             <Header />
             <Container>
                 <Filters />

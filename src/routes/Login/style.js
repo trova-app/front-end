@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { colors } from '../../styles/colors'
 
 export const Header = styled.h1`
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     color: ${colors.white};
     font-family: "Work Sans";
     font-weight: 600;
@@ -12,7 +12,7 @@ export const Header = styled.h1`
 `
 
 export const TopBlock = styled.div`
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 `
 
 export const Form = styled.form`

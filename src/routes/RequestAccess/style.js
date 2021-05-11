@@ -30,10 +30,9 @@ export const Form = styled.form`
 export const Submit = styled.button`
     position: absolute;
     top: 50%;
-    right: 12.5%;
+    right: 17.5%;
     appearance: none;
-    width: 325px;
-    padding: 24px 35px;
+    padding: 24px 48px;
     border: none;
     border-radius: 48px;
     background-color: ${props => props.isError ? colors.red : colors.slateBlue};

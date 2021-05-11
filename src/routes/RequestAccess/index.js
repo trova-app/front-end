@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 import * as Styled from './style'
 import { colors } from '../../styles/colors'
 
@@ -64,10 +65,13 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
             bannerComponent={
                 <p style={{
                     position: "fixed",
-                    top: "5vh",
+                    top: "3vh",
                     right: "5vw",
                     height: "10vh"
                 }}>
+                    <Helmet>
+                        <title>Trova - Request Access</title>
+                    </Helmet>
                     <Styled.AuxText color={colors.lightBlue}>Already have an account?</Styled.AuxText>
                     <Styled.AuxLink to="/login" color={colors.slateBlue}>Log in.</Styled.AuxLink>
                 </p>
@@ -98,15 +102,15 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
                         setEmail(e.target.value)
                     }}
                 />
-                <Styled.Submit isError={!!error} type="submit">REQUEST ACCESS</Styled.Submit>
+                <Styled.Submit isError={!!error} type="submit">REQUEST<br />ACCESS</Styled.Submit>
             </Styled.Form>
-
+{/*
             <div>
                 <p>
                     <Styled.AuxText>Already registered?</Styled.AuxText>
                     <Styled.AuxLink to="/request-access">Login.</Styled.AuxLink>
                 </p>
-            </div>
+            </div> */}
         </BlobContainer>
     )
 }
