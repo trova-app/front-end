@@ -8,6 +8,7 @@ import {
 import { HelmetProvider } from 'react-helmet-async'
 
 import { setTokens, setUserAttributes } from './redux/slices/auth'
+import { useViewportDimensions } from './hooks/useViewportDimensions'
 
 import GlobalStyles from './styles/GlobalStyles'
 import ProtectedRoute from './components/shared/ProtectedRoute'
@@ -19,6 +20,7 @@ import Dashboard from './routes/Dashboard'
 import RequestAccess from './routes/RequestAccess'
 import ChangePassword from './components/ChangePassword'
 import Admin from './components/Admin'
+import MobileViewWarning from './components/MobileViewWarning'
 
 const App = ({
   auth,
@@ -26,6 +28,10 @@ const App = ({
   setUserAttributes
 }) => {
   useSession(setTokens, setUserAttributes)
+
+  const { width } = useViewportDimensions()
+
+  if (width < 900) return <MobileViewWarning />
 
   return (
     <HelmetProvider>

@@ -20,7 +20,7 @@ const DataTable = ({
 }) => {
     useEffect(() => {
         if (data.length === 0)
-            fetch(`https://trova-data-bucket-a1-dev.s3-us-west-1.amazonaws.com/players.json`)
+            fetch(`https://trova-data-bucket-a1-${process.env.NODE_ENV === "production" ? "prod" : "dev"}.s3-us-west-1.amazonaws.com/players.json`)
                 .then(res => res.json())
                 .then(res => {
                     setData(res)

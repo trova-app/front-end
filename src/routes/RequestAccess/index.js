@@ -22,8 +22,11 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        fetch(`https://ki009fkwji.execute-api.us-west-1.amazonaws.com/dev/contact`, {
+        fetch(`${process.env.REACT_APP_FETCH_BASE_URI}/contact`, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({ name, email })
         })
             .then(res => res.json())

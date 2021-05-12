@@ -44,7 +44,7 @@ const Component = ({
                     />
                 </Styled.SearchButton>
             </Styled.SearchForm>
-            {idToken["cognito:groups"]?.includes("Admin") &&
+            {idToken["custom:role"] === "admin" &&
                 <Styled.Button
                     onClick={() => history.push("/admin")}
                     style={{ marginRight: "2%" }}
