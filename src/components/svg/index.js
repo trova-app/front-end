@@ -4,6 +4,8 @@ import Search from './Search'
 import Carat from './Carat'
 import Line from './Line'
 import Triangle from './Triangle'
+import TablePlaceholder from './TablePlaceholder'
+import SearchX from './TablePlaceholder'
 
 const SVG = {
     Blob,
@@ -11,7 +13,9 @@ const SVG = {
     Search,
     Carat,
     Line,
-    Triangle
+    Triangle,
+    TablePlaceholder,
+    SearchX
 }
 
 export default SVG

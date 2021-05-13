@@ -7,6 +7,7 @@ import { setPitcherSort } from '../../../../redux/slices/filters'
 
 import { usePitcherRows } from '../../../../hooks/usePitcherRows'
 
+import Placeholder from './Placeholder'
 import SVG from '../../../svg'
 
 const headers = [
@@ -39,65 +40,67 @@ const DataTable = ({
 
     return (
         <Styled.Container>
-            <Styled.Table>
-                <Styled.Header>
-                    <tr>
-                        {headers.map(elem => {
+            {rows.length === 0 && <Placeholder />}
+            {rows.length !== 0 &&
+                <Styled.Table>
+                    <Styled.Header>
+                        <tr>
+                            {headers.map(elem => {
+                                return (
+                                    <th
+                                        key={elem[0]}
+                                        onClick={() => setPitcherSort(elem[0])}
+                                    >
+                                        {elem[1] || elem[0]}
+                                        {
+                                            sort.column === elem[0]
+                                            &&
+                                            <SVG.Triangle
+                                                fill={colors.gray}
+                                                style={{
+                                                    position: "absolute",
+                                                    top: "6px",
+                                                    right: "6px",
+                                                    width: "16px",
+                                                    transform: sort.order === "ASC" && "rotate(180deg)"
+                                                }}
+                                            />
+                                        }
+                                    </th>
+                                )
+                            })
+                            }
+                        </tr>
+                    </Styled.Header>
+                    <Styled.Body>
+                        {rows.map(elem => {
                             return (
-                                <th
-                                    key={elem[0]}
-                                    onClick={() => setPitcherSort(elem[0])}
-                                >
-                                    {elem[1] || elem[0]}
-                                    {
-                                        sort.column === elem[0]
-                                        &&
-                                        <SVG.Triangle
-                                            fill={colors.gray}
-                                            style={{
-                                                position: "absolute",
-                                                top: "6px",
-                                                right: "6px",
-                                                width: "16px",
-                                                transform: sort.order === "ASC" && "rotate(180deg)"
-                                            }}
-                                        />
-                                    }
-                                </th>
+                                <Styled.Row key={"" + elem.firstName + elem.lastName + [elem.Team, "Team"]}>
+                                    <Styled.Name>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.Name>
+                                    <td>{elem.Team}</td>
+                                    <td>{elem.APP}</td>
+                                    <td>{elem.GS}</td>
+                                    <td>{elem.W}</td>
+                                    <td>{elem.L}</td>
+                                    <td>{elem.SV}</td>
+                                    <td>{elem.IP.toFixed(1)}</td>
+                                    <td>{elem.ERA.toFixed(2)}</td>
+                                    <td>{elem.ER}</td>
+                                    <td>{elem.R}</td>
+                                    <td>{elem.H}</td>
+                                    <td>{elem.OBA.toFixed(3)}</td>
+                                    <td>{elem.SO}</td>
+                                    <td>{elem.BB}</td>
+                                    <td>{elem.HP}</td>
+                                    <td>{elem.CG}</td>
+                                    <td>{elem.SHO}</td>
+                                    <td>{elem.WP}</td>
+                                </Styled.Row>
                             )
-                        })
-                        }
-                    </tr>
-                </Styled.Header>
-                <Styled.Body>
-                    {rows.length === 0 && <p>nothing</p>}
-                    {rows.length !== 0 && rows.map(elem => {
-                        return (
-                            <Styled.Row key={"" + elem.firstName + elem.lastName + [elem.Team, "Team"]}>
-                                <Styled.Name>{`${elem.lastName}, ${elem.firstName[0]}.`}</Styled.Name>
-                                <td>{elem.Team}</td>
-                                <td>{elem.APP}</td>
-                                <td>{elem.GS}</td>
-                                <td>{elem.W}</td>
-                                <td>{elem.L}</td>
-                                <td>{elem.SV}</td>
-                                <td>{elem.IP.toFixed(1)}</td>
-                                <td>{elem.ERA.toFixed(2)}</td>
-                                <td>{elem.ER}</td>
-                                <td>{elem.R}</td>
-                                <td>{elem.H}</td>
-                                <td>{elem.OBA.toFixed(3)}</td>
-                                <td>{elem.SO}</td>
-                                <td>{elem.BB}</td>
-                                <td>{elem.HP}</td>
-                                <td>{elem.CG}</td>
-                                <td>{elem.SHO}</td>
-                                <td>{elem.WP}</td>
-                            </Styled.Row>
-                        )
-                    })}
-                </Styled.Body>
-            </Styled.Table>
+                        })}
+                    </Styled.Body>
+                </Styled.Table>
+            }
         </Styled.Container>
     )
 }
