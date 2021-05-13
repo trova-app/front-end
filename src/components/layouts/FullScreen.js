@@ -8,9 +8,16 @@ const Wrapper = styled.div`
     overflow-y: hidden;
 `
 
-const FullScreen = ({ style, children }) => {
+const FullScreen = ({
+    backgroundColor,
+    style,
+    children
+}) => {
     return (
-        <Wrapper style={style}>
+        <Wrapper style={{
+            backgroundColor,
+            ...style
+        }}>
             {children}
         </Wrapper>
     )

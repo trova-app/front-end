@@ -19,7 +19,7 @@ import ResetPassword from './routes/ResetPassword'
 import Dashboard from './routes/Dashboard'
 import RequestAccess from './routes/RequestAccess'
 import ChangePassword from './components/ChangePassword'
-import Admin from './components/Admin'
+import Admin from './routes/Admin'
 import MobileViewWarning from './components/MobileViewWarning'
 
 const App = ({
