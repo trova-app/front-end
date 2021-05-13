@@ -31,7 +31,6 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
                 authenticate("tester@inthezone.dev", "AlphaTest!1")
                     .then(({ session, attributes }) => {
                         setUserAttributes(attributes)

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { setData } from '../../../../redux/slices/data'
 
@@ -11,14 +12,20 @@ const DataTable = ({
     setData,
     filters,
 }) => {
+    const idToken = useSelector(state => state.auth.tokens.idToken.jwtToken)
+
     useEffect(() => {
         if (data.length === 0)
-            fetch(`https://trova-data-bucket-a1-${process.env.NODE_ENV === "production" ? "prod" : "dev"}.s3-us-west-1.amazonaws.com/players.json`)
+            fetch(`${process.env.REACT_APP_FETCH_BASE_URI}/data`, {
+                headers: {
+                    "Authorization": `Bearer: ${idToken}`
+                }
+            })
                 .then(res => res.json())
                 .then(res => {
                     setData(res)
                 })
-    }, [data, setData])
+    }, [idToken, data, setData])
 
     if (filters.positions.P) {
         return <PitcherTable />

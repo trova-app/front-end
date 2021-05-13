@@ -1,32 +1,20 @@
-import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import * as Styled from './style'
 import { colors } from '../../../../styles/colors'
 
-import { setData } from '../../../../redux/slices/data'
 import { setOffensiveSort } from '../../../../redux/slices/filters'
 
 import SVG from '../../../svg'
 
 const DataTable = ({
     data,
-    setData,
     positionFilter,
     statFilters,
     searchTerm,
     sort,
     setOffensiveSort
 }) => {
-    useEffect(() => {
-        if (data.length === 0)
-            fetch(`https://trova-data-bucket-a1-${process.env.NODE_ENV === "production" ? "prod" : "dev"}.s3-us-west-1.amazonaws.com/players.json`)
-                .then(res => res.json())
-                .then(res => {
-                    setData(res)
-                })
-    }, [data, setData])
-
     return (
         <Styled.Container>
             <Styled.Table>
@@ -177,5 +165,5 @@ export default connect(
         sort: state.filters.sort.offensive,
         searchTerm: state.search.term
     }),
-    { setData, setOffensiveSort }
+    { setOffensiveSort }
 )(DataTable)

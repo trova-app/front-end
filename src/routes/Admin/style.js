@@ -21,6 +21,7 @@ export const CloseButton = styled.button`
     font-family: "Nunito";
     font-size: 24px;
     font-weight: 700;
+    cursor: pointer;
 `
 
 export const Form = styled.form`
@@ -28,6 +29,42 @@ export const Form = styled.form`
     padding: 2%;
     border: 2px solid ${colors.white};
     border-radius: 24px;
+`
+
+export const Textarea = styled.textarea`
+    display: block;
+    width: 50%;
+    max-width: 60vw;
+    margin-bottom: 32px;
+    padding: 14px 18px;
+    border: 2px solid ${colors.white};
+    background-color: transparent;
+    border-radius: 32px;
+    color: ${colors.white};
+    font-size: 20px;
+    font-family: "Nunito";
+    outline: none;
+`
+
+export const FileUploadLabel = styled.label`
+    margin-right: 24px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 24px;
+    background-color: ${colors.lightBlue};
+    color: ${colors.white};
+    font-family: "Nunito";
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+`
+
+export const FileUploadName = styled.span`
+    margin-right: 48px;
+    color: ${colors.white};
+    font-family: "Nunito";
+    font-size: 18px;
+    font-weight: 700;
 `
 
 export const SubmitButton = styled.button`
@@ -41,6 +78,11 @@ export const SubmitButton = styled.button`
     font-size: 24px;
     font-weight: 700;
     cursor: pointer;
+
+    &:disabled {
+        cursor: initial;
+        opacity: .1;
+    }
 `
 
 export const Error = styled.p`
@@ -48,5 +90,13 @@ export const Error = styled.p`
     color: ${colors.red};
     font-family: "Nunito";
     font-size: 24px;
+    font-weight: 700;
+`
+
+export const UploadSuccess = styled.span`
+    margin-left: 5%;
+    color: ${colors.white};
+    font-size: 24px;
+    font-family: "Nunito";
     font-weight: 700;
 `

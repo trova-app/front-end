@@ -26,7 +26,6 @@ const SignUp = ({ header, role }) => {
             null,
             (err, data) => {
                 if (err) {
-                    console.log(err)
                     return setError(err.message)
                 }
 
