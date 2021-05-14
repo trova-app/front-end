@@ -1,9 +1,10 @@
 import * as React from "react"
 
-function SvgComponent({ style }) {
+function SvgComponent({ style, onClick }) {
     return (
         <svg
             style={style || { width: "100%" }}
+            onClick={onClick}
             viewBox="0 0 15 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

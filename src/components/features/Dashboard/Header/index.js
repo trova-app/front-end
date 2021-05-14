@@ -43,6 +43,30 @@ const Component = ({
                         strokeColor={!!search ? colors.white : colors.lightBlue}
                     />
                 </Styled.SearchButton>
+                {
+                    search && <>
+                        <SVG.SearchX style={{
+                            position: "absolute",
+                            top: "55%",
+                            right: "7.5%",
+                            transform: "translate(-7.5%, -55%)",
+                            height: "24px",
+                            cursor: "pointer"
+                        }}
+                            onClick={() => {
+                                setSearch("")
+                                setSearchTerm("")
+                            }}
+                        />
+                        <SVG.SearchLine style={{
+                            position: "absolute",
+                            top: "55%",
+                            right: "6%",
+                            transform: "translate(-6%, -55%)",
+                            height: "24px"
+                        }} />
+                    </>
+                }
             </Styled.SearchForm>
             {idToken["custom:role"] === "admin" &&
                 <Styled.Button
