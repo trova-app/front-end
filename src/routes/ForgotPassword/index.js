@@ -14,12 +14,17 @@ const Component = ({ ...props }) => {
     const history = useHistory()
     const [email, setEmail] = useState("")
     const [error, setError] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        setIsSubmitting(true)
         initiateForgotPassword(email)
             .then(res => history.push("/reset-password"))
-            .catch(err => setError("You must enter a valid email address."))
+            .catch(err => {
+                setIsSubmitting(false)
+                setError("You must enter a valid email address.")
+            })
     }
 
     return (
@@ -40,7 +45,7 @@ const Component = ({ ...props }) => {
                         <title>Trova - Forgot Password</title>
                     </Helmet>
                     <Styled.AuxText color={colors.lightBlue}>Know your password?</Styled.AuxText>
-                    <Styled.AuxLink to="/request-access" color={colors.slateBlue}>Back to login.</Styled.AuxLink>
+                    <Styled.AuxLink to="/login" color={colors.slateBlue}>Back to login.</Styled.AuxLink>
                 </p>
             }
         >
@@ -57,7 +62,7 @@ const Component = ({ ...props }) => {
                         setEmail(e.target.value)
                     }}
                 />
-                <Styled.Submit isError={error}>SEND EMAIL</Styled.Submit>
+                <Styled.Submit isError={error} isSubmitting={isSubmitting} disabled={isSubmitting}>SEND EMAIL</Styled.Submit>
             </Styled.Form>
             <Styled.Error>{error}</Styled.Error>
             <p>

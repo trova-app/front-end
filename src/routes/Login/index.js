@@ -18,6 +18,7 @@ const SignupComponent = ({ auth, setTokens, setUserAttributes }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loginError, setLoginError] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [needsVerification, setNeedsVerification] = useState(false)
     const [verificationCode, setVerificationCode] = useState("")
 
@@ -57,6 +58,7 @@ const SignupComponent = ({ auth, setTokens, setUserAttributes }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        setIsSubmitting("true")
 
         authenticate(email, password)
             .then(({ session, attributes }) => {
@@ -90,6 +92,7 @@ const SignupComponent = ({ auth, setTokens, setUserAttributes }) => {
                 if (err.code === "InvalidParameterException") {
                     return setLoginError("You must enter a username and password.")
                 }
+                setIsSubmitting(false)
             })
     }
 
@@ -157,7 +160,7 @@ const SignupComponent = ({ auth, setTokens, setUserAttributes }) => {
                         }}
                     />
                     <Styled.LoginError isError={!!loginError}>{loginError}</Styled.LoginError>
-                    <Styled.Submit isError={!!loginError} type="submit">LOG IN</Styled.Submit>
+                    <Styled.Submit isError={!!loginError} isSubmitting={isSubmitting} disabled={isSubmitting} type="submit">LOG IN</Styled.Submit>
                 </Styled.Form>
             </Styled.TopBlock>
             <div>

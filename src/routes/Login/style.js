@@ -44,8 +44,14 @@ export const Submit = styled.button`
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 4px;
-    cursor: pointer;
     transition: .2s;
+    opacity: ${props => props.isSubmitting && ".2"};
+
+    &:hover {
+    background-color: ${props => props.isError ? colors.red : colors.white};
+    color: ${colors.slateBlue};
+    cursor: pointer;
+    }
 `
 
 export const AuxText = styled.span`

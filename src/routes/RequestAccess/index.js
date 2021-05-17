@@ -17,10 +17,12 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
     const [error, setError] = useState("")
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const history = useHistory()
 
     const onSubmit = (e) => {
         e.preventDefault()
+        setIsSubmitting(true)
 
         fetch(`${process.env.REACT_APP_FETCH_BASE_URI}/contact`, {
             method: "POST",
@@ -54,7 +56,10 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
                         console.error("Login Error: ", err)
                     })
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                setIsSubmitting(false)
+            })
     }
 
     return (
@@ -104,7 +109,7 @@ const RequestAccess = ({ setUserAttributes, setTokens }) => {
                         setEmail(e.target.value)
                     }}
                 />
-                <Styled.Submit isError={!!error} type="submit">REQUEST<br />ACCESS</Styled.Submit>
+                <Styled.Submit isError={!!error} isSubmitting={isSubmitting} disabled={isSubmitting} type="submit">REQUEST<br />ACCESS</Styled.Submit>
             </Styled.Form>
             {/*
             <div>
