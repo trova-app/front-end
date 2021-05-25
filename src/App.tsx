@@ -34,7 +34,7 @@ export const App: React.FC = () => {
   return (
     <HelmetProvider>
       <GlobalStyles />
-      < Router >
+      <Router>
         <Switch>
           <Route exact path="/" >
             <Home />

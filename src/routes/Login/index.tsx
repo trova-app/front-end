@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 import { authenticate } from '../../auth/authenticate'
 import { verifyEmail } from '../../auth/verifyEmail'
 import { resendVerificationCode } from '../../auth/resendVerificationCode'
-import { setTokens, setUserAttributes } from '../../redux/slices/auth'
+import { initialState, setTokens, setUserAttributes } from '../../redux/slices/auth'
 
 import { useSelector } from '../../hooks/redux/useSelector'
 import { useDispatch } from '../../hooks/redux/useDispatch'
@@ -30,7 +30,7 @@ const SignupComponent: React.FC = ({ ...props }) => {
     const history = useHistory()
 
     useEffect(() => {
-        if (auth.tokens !== null) {
+        if (auth.tokens !== initialState.tokens) {
             history.push("/dashboard")
         }
     }, [history, auth])
