@@ -8,19 +8,19 @@ export const useSession = (): void => {
     const dispatch = useDispatch()
     useEffect(() => {
         getSession()
-            .then(({ session, attributes }) => {
-                dispatch(setUserAttributes(attributes))
+            .then((value: any) => {
+                dispatch(setUserAttributes(value.attributes))
                 dispatch(setTokens({
                     accessToken: {
-                        jwtToken: session.accessToken.jwtToken,
-                        payload: session.accessToken.payload
+                        jwtToken: value.session.accessToken.jwtToken,
+                        payload: value.session.accessToken.payload
                     },
                     idToken: {
-                        jwtToken: session.idToken.jwtToken,
-                        payload: session.idToken.payload
+                        jwtToken: value.session.idToken.jwtToken,
+                        payload: value.session.idToken.payload
                     },
                     refreshToken: {
-                        token: session.refreshToken.token
+                        token: value.session.refreshToken.token
                     }
                 }))
             })

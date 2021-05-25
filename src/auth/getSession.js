@@ -15,11 +15,15 @@ export const getSession = async () => {
                             } else {
                                 const results = {}
 
-                                for (let attribute of attributes) {
-                                    const { Name, Value } = attribute
-                                    results[Name] = Value
+                                if (attributes) {
+                                    for (let attribute of attributes) {
+                                        const { Name, Value } = attribute
+                                        results[Name] = Value
+                                    }
+                                    resolve(results)
+                                } else {
+                                    resolve(results)
                                 }
-                                resolve(results)
                             }
                         })
                     })

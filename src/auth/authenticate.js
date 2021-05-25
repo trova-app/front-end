@@ -13,13 +13,16 @@ export const authenticate = async (Username, Password) => {
                         if (err) {
                             reject(err)
                         } else {
-                            const results = {}
-
-                            for (let attribute of attributes) {
-                                const { Name, Value } = attribute
-                                results[Name] = Value
+                            let results = {}
+                            if (attributes) {
+                                for (let attribute of attributes) {
+                                    const { Name, Value } = attribute
+                                    results[Name] = Value
+                                }
+                                resolve(results)
+                            } else {
+                                resolve(results)
                             }
-                            resolve(results)
                         }
                     })
                 })

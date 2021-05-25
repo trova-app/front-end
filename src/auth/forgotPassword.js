@@ -20,7 +20,7 @@ export const changeForgottenPassword = (Username, verificationCode, newPassword)
         const user = new CognitoUser({ Username, Pool })
 
         user.confirmPassword(verificationCode, newPassword, {
-            onSuccess: (data) => resolve(data),
+            onSuccess: () => resolve("Password has been changed."),
             onFailure: (err) => {
                 console.log(err)
                 reject(err)
