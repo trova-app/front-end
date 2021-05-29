@@ -9,7 +9,8 @@ interface Props {
     values: number[],
     setValues: (arg: number[]) => void,
     setFinalValues: (arg: number[]) => void,
-    toFixed?: number
+    toFixed?: number,
+    units?: string
 }
 
 const TwoThumbs: React.FC<Props> = ({
@@ -19,7 +20,8 @@ const TwoThumbs: React.FC<Props> = ({
     values,
     setValues,
     setFinalValues,
-    toFixed
+    toFixed,
+    units
 }) => {
     return (
         <div
@@ -99,10 +101,10 @@ const TwoThumbs: React.FC<Props> = ({
                 }}
             >
                 <div>
-                    {values[0].toFixed(toFixed || 0)}
+                    {values[0].toFixed(toFixed || 0)}{units === "percentage" && "%"}
                 </div>
                 <div>
-                    {values[1].toFixed(toFixed || 0)}
+                    {values[1].toFixed(toFixed || 0)}{units === "percentage" && "%"}
                 </div>
             </div>
         </div>

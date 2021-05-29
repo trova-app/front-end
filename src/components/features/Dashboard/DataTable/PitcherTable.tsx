@@ -5,6 +5,7 @@ import { setPitcherSort } from '../../../../redux/slices/filters'
 
 import { usePitcherRows } from '../../../../hooks/usePitcherRows'
 import { useSelector } from '../../../../hooks/redux/useSelector'
+import { useDispatch } from '../../../../hooks/redux/useDispatch'
 
 import Placeholder from './Placeholder'
 import SVG from '../../../svg'
@@ -37,6 +38,7 @@ const headers = [
 
 const DataTable: React.FC = () => {
     const sort = useSelector(state => state.filters.sort.pitcher)
+    const dispatch = useDispatch()
     const rows = usePitcherRows()
 
     return (
@@ -50,7 +52,7 @@ const DataTable: React.FC = () => {
                                 return (
                                     <th
                                         key={elem[0]}
-                                        onClick={() => setPitcherSort(elem[0])}
+                                        onClick={() => dispatch(setPitcherSort(elem[0]))}
                                     >
                                         {elem[1] || elem[0]}
                                         {

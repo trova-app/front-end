@@ -12,14 +12,16 @@ interface Props {
     filterKey: keyof typeof initialState.offensiveFilters,
     title: string,
     step: number,
-    toFixed: number
+    toFixed: number,
+    units?: "percentage"
 }
 
 const OffensiveRangeSelector: React.FC<Props> = ({
     filterKey,
     title,
     step,
-    toFixed
+    toFixed,
+    units
 }) => {
     const stat = useSelector(state => state.filters.offensiveFilters[filterKey])
     const statExtremes = useSelector(state => state.filters.offensiveExtremities[filterKey])
@@ -46,6 +48,7 @@ const OffensiveRangeSelector: React.FC<Props> = ({
                     }))
                 }}
                 toFixed={toFixed}
+                units={units}
             />
         </SectionContainer>
     )

@@ -17,6 +17,10 @@ import Strikeouts from './Sections/lib/pitcher/Strikeouts'
 import Walks from './Sections/lib/pitcher/Walks'
 import WildPitches from './Sections/lib/pitcher/WildPitches'
 import Wins from './Sections/lib/pitcher/Wins'
+import HitRate from './Sections/lib/pitcher/HitRate'
+import StrikeoutRate from './Sections/lib/pitcher/StrikeoutRate'
+import StrikeoutsToWalksRatio from './Sections/lib/pitcher/StrikeoutsToWalksRatio'
+import WalkRate from './Sections/lib/pitcher/WalkRate'
 
 const Filters: React.FC = ({ ...props }) => {
     return (
@@ -29,10 +33,14 @@ const Filters: React.FC = ({ ...props }) => {
             <CompleteGames />
             <Shutouts />
             <InningsPitched />
+            <StrikeoutsToWalksRatio />
             <Strikeouts />
+            <StrikeoutRate />
             <Walks />
+            <WalkRate />
             <OpposingBattingAverage />
             <Hits />
+            <HitRate />
             <HitByPitches />
             <Runs />
             <Saves />

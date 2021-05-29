@@ -12,14 +12,16 @@ interface Props {
     filterKey: keyof typeof initialState.pitcherFilters,
     title: string,
     step: number,
-    toFixed?: number
+    toFixed?: number,
+    units?: "percentage"
 }
 
 const PitcherRangeSelector: React.FC<Props> = ({
     filterKey,
     title,
     step,
-    toFixed
+    toFixed,
+    units
 }) => {
     const stat = useSelector(state => state.filters.pitcherFilters[filterKey])
     const statExtremes = useSelector(state => state.filters.pitcherExtremities[filterKey])
@@ -46,6 +48,7 @@ const PitcherRangeSelector: React.FC<Props> = ({
                     }))
                 }}
                 toFixed={toFixed || 0}
+                units={units}
             />
         </SectionContainer>
     )

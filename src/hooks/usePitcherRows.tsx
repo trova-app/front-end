@@ -59,7 +59,10 @@ export const usePitcherRows = () => {
                 .filter((elem: PitcherInterface) => filters.strikeouts[1] >= Number(elem.SO) && filters.strikeouts[0] <= Number(elem.SO))
                 .filter((elem: PitcherInterface) => filters.saves[1] >= Number(elem.SV) && filters.saves[0] <= Number(elem.SV))
                 .filter((elem: PitcherInterface) => filters.wins[1] >= Number(elem.W) && filters.wins[0] <= Number(elem.W))
-                .filter((elem: PitcherInterface) => filters.wildPitches[1] >= Number(elem.WP) && filters.wildPitches[0] <= Number(elem.WP))
+                .filter((elem: PitcherInterface) => filters.bbRate[1] >= Number(elem.bbRate) && filters.bbRate[0] <= Number(elem.WP))
+                .filter((elem: PitcherInterface) => filters.hRate[1] >= Number(elem.hRate) && filters.hRate[0] <= Number(elem.WP))
+                .filter((elem: PitcherInterface) => filters.kRate[1] >= Number(elem.kRate) && filters.kRate[0] <= Number(elem.WP))
+                .filter((elem: PitcherInterface) => filters.soTObb[1] >= Number(elem.soTObb) && filters.soTObb[0] <= Number(elem.WP))
                 // Filter by Search
                 .filter((elem: PitcherInterface) => {
                     if (!searchTerm) return elem
@@ -120,7 +123,11 @@ export const usePitcherRows = () => {
         filters.wins,
         searchTerm,
         sort.column,
-        sort.order
+        sort.order,
+        filters.bbRate,
+        filters.kRate,
+        filters.hRate,
+        filters.soTObb
     ])
 
     return filteredData

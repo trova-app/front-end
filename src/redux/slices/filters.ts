@@ -36,6 +36,10 @@ interface PitcherFiltersInterface {
     saves: number[],
     wins: number[],
     wildPitches: number[],
+    bbRate: number[],
+    kRate: number[],
+    hRate: number[],
+    soTObb: number[]
 }
 
 export interface OffensiveFiltersInterface {
@@ -57,7 +61,7 @@ export interface OffensiveFiltersInterface {
     hitByPitches: number[],
 }
 
-const pitcherSchema = {
+export const pitcherSchema = {
     appearances: [0, 0],
     walks: [0, 0],
     completeGames: [0, 0],
@@ -75,6 +79,10 @@ const pitcherSchema = {
     saves: [0, 0],
     wins: [0, 0],
     wildPitches: [0, 0],
+    bbRate: [0, 0],
+    kRate: [0, 0],
+    hRate: [0, 0],
+    soTObb: [0, 0]
 }
 
 export const offensiveSchema = {
