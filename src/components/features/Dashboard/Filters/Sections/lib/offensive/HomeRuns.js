@@ -16,8 +16,8 @@ const HomeRuns = ({ homeRuns, setIsDefaultFilters, setOffensiveBounds }) => {
         <SectionContainer header="HR">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={250}
+                rangeMin={homeRuns[0]}
+                rangeMax={homeRuns[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

@@ -16,8 +16,8 @@ const Appearances = ({ appearances, setIsDefaultFilters, setPitcherBounds }) => 
         <SectionContainer header="APP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={200}
+                rangeMin={appearances[0]}
+                rangeMax={appearances[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

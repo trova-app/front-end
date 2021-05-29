@@ -16,8 +16,8 @@ const RBI = ({ rbi, setIsDefaultFilters, setOffensiveBounds }) => {
         <SectionContainer header="RBI">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={300}
+                rangeMin={rbi[0]}
+                rangeMax={rbi[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

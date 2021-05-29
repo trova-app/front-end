@@ -16,8 +16,8 @@ const Strikeouts = ({ strikeouts, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="SO">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={1000}
+                rangeMin={strikeouts[0]}
+                rangeMax={strikeouts[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

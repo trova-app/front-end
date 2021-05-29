@@ -16,8 +16,8 @@ const OpposingBattingAverage = ({ opposingBattingAverage, setIsDefaultFilters, s
         <SectionContainer header="OBA">
             <RangeInput
                 step={.001}
-                rangeMin={0}
-                rangeMax={1}
+                rangeMin={opposingBattingAverage[0]}
+                rangeMax={opposingBattingAverage[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

@@ -23,22 +23,22 @@ const Filters: React.FC = ({ ...props }) => {
         <Styled.Scrollable>
             <Styled.HR />
             <Appearances />
-            <CompleteGames />
             <EarnedRunAverage />
             <EarnedRuns />
             <GamesStarted />
-            <HitByPitches />
-            <Hits />
-            <InningsPitched />
-            <Losses />
-            <OpposingBattingAverage />
-            <Runs />
-            <Saves />
+            <CompleteGames />
             <Shutouts />
+            <InningsPitched />
             <Strikeouts />
             <Walks />
+            <OpposingBattingAverage />
+            <Hits />
+            <HitByPitches />
+            <Runs />
+            <Saves />
             <WildPitches />
             <Wins />
+            <Losses />
         </Styled.Scrollable>
     )
 }

@@ -16,8 +16,8 @@ const EarnedRuns = ({ earnedRuns, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="ER">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={250}
+                rangeMin={earnedRuns[0]}
+                rangeMax={earnedRuns[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

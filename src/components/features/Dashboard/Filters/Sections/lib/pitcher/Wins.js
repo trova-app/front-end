@@ -16,8 +16,8 @@ const Wins = ({ wins, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="W">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={50}
+                rangeMin={wins[0]}
+                rangeMax={wins[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

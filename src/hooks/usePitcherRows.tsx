@@ -23,7 +23,11 @@ interface PitcherInterface {
     SO: number,
     SV: number,
     W: number,
-    WP: number
+    WP: number,
+    bbRate: number,
+    hRate: number,
+    kRate: number,
+    soTObb: number,
 }
 
 export const usePitcherRows = () => {

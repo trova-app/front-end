@@ -13,11 +13,11 @@ const HitByPitches = ({ hitByPitches, setIsDefaultFilters, setPitcherBounds }) =
     }, [hitByPitches])
 
     return (
-        <SectionContainer header="HP">
+        <SectionContainer header="HBP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={250}
+                rangeMin={hitByPitches[0]}
+                rangeMax={hitByPitches[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

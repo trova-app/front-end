@@ -16,8 +16,8 @@ const InningsPitched = ({ inningsPitched, setIsDefaultFilters, setPitcherBounds 
         <SectionContainer header="IP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={1000}
+                rangeMin={inningsPitched[0]}
+                rangeMax={inningsPitched[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

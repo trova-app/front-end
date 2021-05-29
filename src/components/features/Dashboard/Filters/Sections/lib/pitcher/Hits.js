@@ -16,8 +16,8 @@ const Hits = ({ hits, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="H">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={1000}
+                rangeMin={hits[0]}
+                rangeMax={hits[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

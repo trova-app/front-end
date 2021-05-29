@@ -16,8 +16,8 @@ const OnBasePlusSlugging = ({ onBasePlusSlugging, setIsDefaultFilters, setOffens
         <SectionContainer header="OPS">
             <RangeInput
                 step={.001}
-                rangeMin={0}
-                rangeMax={2}
+                rangeMin={onBasePlusSlugging[0]}
+                rangeMax={onBasePlusSlugging[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

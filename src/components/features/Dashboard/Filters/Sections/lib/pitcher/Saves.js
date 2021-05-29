@@ -16,8 +16,8 @@ const Saves = ({ saves, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="SV">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={56}
+                rangeMin={saves[0]}
+                rangeMax={saves[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

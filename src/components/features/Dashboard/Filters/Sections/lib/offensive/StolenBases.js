@@ -16,8 +16,8 @@ const StolenBases = ({ stolenBases, setIsDefaultFilters, setOffensiveBounds }) =
         <SectionContainer header="SB">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={stolenBases[0]}
+                rangeMax={stolenBases[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

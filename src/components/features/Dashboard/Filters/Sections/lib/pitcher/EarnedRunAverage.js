@@ -16,8 +16,8 @@ const EarnedRunAverage = ({ earnedRunAverage, setIsDefaultFilters, setPitcherBou
         <SectionContainer header="ERA">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={earnedRunAverage[0]}
+                rangeMax={earnedRunAverage[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

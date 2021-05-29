@@ -16,8 +16,8 @@ const WildPitches = ({ wildPitches, setIsDefaultFilters, setPitcherBounds }) => 
         <SectionContainer header="WP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={wildPitches[0]}
+                rangeMax={wildPitches[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

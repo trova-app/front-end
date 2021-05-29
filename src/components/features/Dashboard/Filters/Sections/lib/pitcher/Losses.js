@@ -16,8 +16,8 @@ const Losses = ({ losses, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="L">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={50}
+                rangeMin={losses[0]}
+                rangeMax={losses[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

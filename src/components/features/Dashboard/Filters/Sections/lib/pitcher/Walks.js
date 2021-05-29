@@ -16,8 +16,8 @@ const Walks = ({ walks, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="BB">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={1000}
+                rangeMin={walks[0]}
+                rangeMax={walks[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

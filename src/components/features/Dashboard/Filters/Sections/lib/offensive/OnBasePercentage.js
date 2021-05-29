@@ -16,8 +16,8 @@ const OnBasePercentage = ({ onBasePercentage, setIsDefaultFilters, setOffensiveB
         <SectionContainer header="OBP">
             <RangeInput
                 step={.001}
-                rangeMin={0}
-                rangeMax={1}
+                rangeMin={onBasePercentage[0]}
+                rangeMax={onBasePercentage[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

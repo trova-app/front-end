@@ -16,8 +16,8 @@ const Shutouts = ({ shutouts, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="SHO">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={56}
+                rangeMin={shutouts[0]}
+                rangeMax={shutouts[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

@@ -16,8 +16,8 @@ const CompleteGames = ({ completeGames, setIsDefaultFilters, setPitcherBounds })
         <SectionContainer header="CG">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={25}
+                rangeMin={completeGames[0]}
+                rangeMax={completeGames[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

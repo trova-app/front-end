@@ -16,8 +16,8 @@ const HitByPitches = ({ hitByPitches, setIsDefaultFilters, setOffensiveBounds })
         <SectionContainer header="HP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={hitByPitches[0]}
+                rangeMax={hitByPitches[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

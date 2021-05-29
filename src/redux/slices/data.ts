@@ -1,7 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+type LastUpdatedType = {
+    payload: {
+        date: string
+    }
+}
+
 const initialState = {
-    dataset: []
+    dataset: [],
+    meta: {
+        lastUpdated: ""
+    }
 }
 
 const dataSlice = createSlice({
@@ -10,12 +19,16 @@ const dataSlice = createSlice({
     reducers: {
         setData: (state, action) => {
             state.dataset = action.payload
+        },
+        setLastUpdated: (state, action: LastUpdatedType) => {
+            state.meta.lastUpdated = action.payload.date
         }
     }
 })
 
 export const {
-    setData
+    setData,
+    setLastUpdated
 } = dataSlice.actions
 
 export default dataSlice.reducer

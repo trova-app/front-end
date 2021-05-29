@@ -20,8 +20,8 @@ const CaughtStealing: React.FC = ({ ...props }) => {
         <SectionContainer header="CS">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={caughtStealing[0]}
+                rangeMax={caughtStealing[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

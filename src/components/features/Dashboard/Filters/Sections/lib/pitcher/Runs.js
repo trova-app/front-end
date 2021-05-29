@@ -16,8 +16,8 @@ const Runs = ({ runs, setIsDefaultFilters, setPitcherBounds }) => {
         <SectionContainer header="R">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={1000}
+                rangeMin={runs[0]}
+                rangeMax={runs[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

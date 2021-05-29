@@ -20,8 +20,8 @@ const Doubles: React.FC = ({ ...props }) => {
         <SectionContainer header="2B">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={250}
+                rangeMin={doubles[0]}
+                rangeMax={doubles[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

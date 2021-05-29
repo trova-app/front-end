@@ -16,8 +16,8 @@ const Triples = ({ triples, setIsDefaultFilters, setOffensiveBounds }) => {
         <SectionContainer header="3B">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={250}
+                rangeMin={triples[0]}
+                rangeMax={triples[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

@@ -20,8 +20,8 @@ const BattingAverage: React.FC = ({ ...props }) => {
         <SectionContainer header="AVG">
             <RangeInput
                 step={.001}
-                rangeMin={0}
-                rangeMax={1}
+                rangeMin={battingAverage[0]}
+                rangeMax={battingAverage[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {

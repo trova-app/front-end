@@ -16,8 +16,8 @@ const GamesPlayed = ({ gamesPlayed, setIsDefaultFilters, setOffensiveBounds }) =
         <SectionContainer header="GP">
             <RangeInput
                 step={1}
-                rangeMin={0}
-                rangeMax={100}
+                rangeMin={gamesPlayed[0]}
+                rangeMax={gamesPlayed[1]}
                 values={values}
                 setValues={setValues}
                 setFinalValues={() => {
