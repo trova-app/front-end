@@ -43,7 +43,7 @@ interface PitcherFiltersInterface {
 
 export type PitcherFiltersTypes = keyof PitcherFiltersInterface
 
-interface OffensiveFiltersInterface {
+export interface OffensiveFiltersInterface {
     gamesPlayed: number[],
     atBats: number[],
     battingAverage: number[],
@@ -62,7 +62,7 @@ interface OffensiveFiltersInterface {
     hitByPitches: number[],
 }
 
-export type OffensiveFiltersTypes = keyof OffensiveFiltersInterface
+type OffensiveFiltersTypes = keyof OffensiveFiltersInterface
 
 const pitcherSchema = {
     appearances: [0, 0],
@@ -84,7 +84,7 @@ const pitcherSchema = {
     wildPitches: [0, 0],
 }
 
-const offensiveSchema = {
+export const offensiveSchema = {
     gamesPlayed: [0, 0],
     atBats: [0, 0],
     battingAverage: [0, 0],
@@ -103,7 +103,7 @@ const offensiveSchema = {
     hitByPitches: [0, 0]
 }
 
-const initialState = {
+export const initialState = {
     sort: {
         pitcher: {
             column: "ERA",

@@ -5,12 +5,12 @@ import { colors } from '../../../../../styles/colors'
 import SVG from '../../../../svg'
 
 interface Props {
-    header: string,
+    title: string,
     children: JSX.Element
 }
 
 const Section: React.FC<Props> = ({
-    header,
+    title,
     children
 }) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +18,7 @@ const Section: React.FC<Props> = ({
     return (
         <Styled.Container>
             <Styled.Header onClick={() => setIsOpen(!isOpen)}>
-                {header}
+                {title}
                 <SVG.Carat
                     fill={colors.gray}
                     style={{

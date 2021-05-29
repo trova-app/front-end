@@ -1,12 +1,12 @@
 import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 
-const BattingAverage: React.FC = () => (
+const OneBasePlusSlugging: React.FC = () => (
     <OffensiveRangeSelector
-        title="AVG"
-        filterKey="battingAverage"
+        title="OPS"
+        filterKey="onBasePlusSlugging"
         step={.001}
         toFixed={3}
     />
 )
 
-export default BattingAverage
+export default OneBasePlusSlugging

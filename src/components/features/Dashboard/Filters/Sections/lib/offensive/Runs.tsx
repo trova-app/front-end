@@ -1,12 +1,12 @@
 import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 
-const Doubles: React.FC = () => (
+const Runs: React.FC = () => (
     <OffensiveRangeSelector
-        title="2B"
-        filterKey="doubles"
+        title="R"
+        filterKey="runs"
         step={1}
         toFixed={1}
     />
 )
 
-export default Doubles
+export default Runs

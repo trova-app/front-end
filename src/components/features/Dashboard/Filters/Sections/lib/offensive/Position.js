@@ -42,7 +42,7 @@ const positionsArray = [
 ]
 
 const Position = ({ positions, setIsDefaultFilters, setPosition }) => (
-    <SectionContainer header="Position">
+    <SectionContainer title="Position">
         {positionsArray.map(({ label, abbreviation }) => (
             <Checkbox
                 key={label}

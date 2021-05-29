@@ -1,12 +1,12 @@
 import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 
-const BattingAverage: React.FC = () => (
+const OnBasePercentage: React.FC = () => (
     <OffensiveRangeSelector
-        title="AVG"
-        filterKey="battingAverage"
+        title="OBP"
+        filterKey="onBasePercentage"
         step={.001}
         toFixed={3}
     />
 )
 
-export default BattingAverage
+export default OnBasePercentage
