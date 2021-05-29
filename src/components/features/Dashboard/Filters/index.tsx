@@ -1,4 +1,3 @@
-
 import * as Styled from './style'
 
 import { clearAllFilters, setIsDefaultFilters } from '../../../../redux/slices/filters'
@@ -29,9 +28,11 @@ const Filters = () => {
                 Clear filters
                 </Styled.ClearFilters>
             <PlayerTypeToggler />
-            {dataIsFetched
-                ? filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />
-                : null}
+            {
+                dataIsFetched
+                    ? filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />
+                    : null
+            }
         </Styled.Container>
     )
 }

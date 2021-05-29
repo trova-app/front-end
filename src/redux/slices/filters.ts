@@ -187,44 +187,8 @@ const filterSlice = createSlice({
                 "CF": true,
                 "RF": true
             }
-            state.pitcherFilters = {
-                appearances: [0, 200],
-                walks: [0, 1000],
-                completeGames: [0, 25],
-                earnedRuns: [0, 250],
-                earnedRunAverage: [0, 100],
-                gamesStarted: [0, 56],
-                hits: [0, 1000],
-                hitByPitches: [0, 250],
-                inningsPitched: [0, 1000],
-                losses: [0, 50],
-                opposingBattingAverage: [0, 1],
-                runs: [0, 1000],
-                shutouts: [0, 56],
-                strikeouts: [0, 1000],
-                saves: [0, 56],
-                wins: [0, 50],
-                wildPitches: [0, 100],
-
-            }
-            state.offensiveFilters = {
-                gamesPlayed: [0, 100],
-                atBats: [0, 350],
-                battingAverage: [0, 1],
-                onBasePercentage: [0, 1],
-                onBasePlusSlugging: [0, 2],
-                runs: [0, 150],
-                hits: [0, 250],
-                doubles: [0, 250],
-                triples: [0, 250],
-                homeRuns: [0, 250],
-                rbi: [0, 300],
-                walks: [0, 250],
-                strikeouts: [0, 250],
-                stolenBases: [0, 100],
-                caughtStealing: [0, 100],
-                hitByPitches: [0, 100]
-            }
+            state.pitcherFilters = state.pitcherExtremities
+            state.offensiveFilters = state.offensiveExtremities
         }
     }
 })
