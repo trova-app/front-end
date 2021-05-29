@@ -11,6 +11,7 @@ import PitcherFilters from './PitcherFilters'
 import OffensiveFilters from './OffensiveFilters'
 
 const Filters = () => {
+    const dataIsFetched = useSelector(state => state.data.dataset).length > 0
     const filters = useSelector(state => state.filters)
     const isDefaultFilters = useSelector(state => state.filters.isDefaultFilters)
     const dispatch = useDispatch()
@@ -28,7 +29,9 @@ const Filters = () => {
                 Clear filters
                 </Styled.ClearFilters>
             <PlayerTypeToggler />
-            {filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />}
+            {dataIsFetched
+                ? filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />
+                : null}
         </Styled.Container>
     )
 }

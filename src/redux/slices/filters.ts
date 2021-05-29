@@ -7,7 +7,7 @@ type DataRangesActionType = {
     }
 }
 
-interface PositionsInterface {
+export interface PositionsInterface {
     "P": boolean
     "C": boolean
     "1B": boolean
@@ -18,9 +18,6 @@ interface PositionsInterface {
     "CF": boolean
     "RF": boolean
 }
-
-export type PositionsTypes = keyof PositionsInterface
-
 interface PitcherFiltersInterface {
     appearances: number[],
     walks: number[],
@@ -41,8 +38,6 @@ interface PitcherFiltersInterface {
     wildPitches: number[],
 }
 
-export type PitcherFiltersTypes = keyof PitcherFiltersInterface
-
 export interface OffensiveFiltersInterface {
     gamesPlayed: number[],
     atBats: number[],
@@ -61,8 +56,6 @@ export interface OffensiveFiltersInterface {
     caughtStealing: number[],
     hitByPitches: number[],
 }
-
-type OffensiveFiltersTypes = keyof OffensiveFiltersInterface
 
 const pitcherSchema = {
     appearances: [0, 0],
@@ -171,13 +164,13 @@ const filterSlice = createSlice({
             state.positions.P = action.payload
         },
         setPosition: (state, action) => {
-            state.positions[action.payload as PositionsTypes] = !state.positions[action.payload as PositionsTypes]
+            state.positions[action.payload as keyof PositionsInterface] = !state.positions[action.payload as keyof PositionsInterface]
         },
         setPitcherBounds: (state, action) => {
-            state.pitcherFilters[action.payload.key as PitcherFiltersTypes] = action.payload.value
+            state.pitcherFilters[action.payload.key as keyof PitcherFiltersInterface] = action.payload.value
         },
         setOffensiveBounds: (state, action) => {
-            state.offensiveFilters[action.payload.key as OffensiveFiltersTypes] = action.payload.value
+            state.offensiveFilters[action.payload.key as keyof OffensiveFiltersInterface] = action.payload.value
         },
         setIsDefaultFilters: (state, action) => {
             state.isDefaultFilters = action.payload

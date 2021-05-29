@@ -1,4 +1,4 @@
-import { PositionsTypes } from '../redux/slices/filters'
+import { PositionsInterface } from '../redux/slices/filters'
 import { useState, useEffect } from 'react'
 import { useSelector } from '../hooks/redux/useSelector'
 
@@ -37,7 +37,7 @@ export const useHitterRows = () => {
         if (data) {
             setFilteredData(data
                 // Filter by Position
-                .filter((elem: { position: string }) => positionFilter[elem.position as PositionsTypes])
+                .filter((elem: { position: string }) => positionFilter[elem.position as keyof PositionsInterface])
                 // Filter by Stats
                 .filter((elem: PlayerInterface) => statFilters.gamesPlayed[1] >= Number(elem.GP) && statFilters.gamesPlayed[0] <= Number(elem.GP))
                 .filter((elem: PlayerInterface) => statFilters.atBats[1] >= Number(elem.AB) && statFilters.atBats[0] <= Number(elem.AB))
