@@ -2,11 +2,10 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 
 const StrikeoutRate: React.FC = () => (
     <PitcherRangeSelector
-        title="K%"
+        title="K/9"
         filterKey="kRate"
         step={.01}
-        toFixed={0}
-        units="percentage"
+        toFixed={1}
     />
 )
 

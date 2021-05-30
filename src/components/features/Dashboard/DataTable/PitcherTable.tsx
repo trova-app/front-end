@@ -23,13 +23,13 @@ const headers = [
     ["ER"],
     ["R"],
     ["H"],
-    ["hRate", "H%"],
+    ["hRate", "H/9"],
     ["OBA"],
     ["SO"],
     ["BB"],
     ["soTObb", "K/BB"],
-    ["kRate", "K%"],
-    ["bbRate", "BB%"],
+    ["kRate", "K/9"],
+    ["bbRate", "BB/9"],
     ["HP"],
     ["CG"],
     ["SHO"],
@@ -91,13 +91,13 @@ const DataTable: React.FC = () => {
                                     <td>{elem.ER}</td>
                                     <td>{elem.R}</td>
                                     <td>{elem.H}</td>
-                                    <td>{elem.hRate.toFixed(1)}%</td>
+                                    <td>{elem.hRate.toFixed(1)}</td>
                                     <td>{elem.OBA.toFixed(3)}</td>
                                     <td>{elem.SO}</td>
                                     <td>{elem.BB}</td>
                                     <td>{elem.soTObb.toFixed(1)}</td>
-                                    <td>{elem.kRate.toFixed(1)}%</td>
-                                    <td>{elem.bbRate.toFixed(1)}%</td>
+                                    <td>{elem.kRate.toFixed(1)}</td>
+                                    <td>{elem.bbRate.toFixed(1)}</td>
                                     <td>{elem.HP}</td>
                                     <td>{elem.CG}</td>
                                     <td>{elem.SHO}</td>
