@@ -26,8 +26,6 @@ const DataTable: React.FC = () => {
                 .then(res => res.json())
                 .then(res => {
                     setFetching(false)
-                    console.log(res.data);
-
 
                     const pitchersRanges = res.meta.ranges.pitchers
                     const hittersRanges = res.meta.ranges.hitters
