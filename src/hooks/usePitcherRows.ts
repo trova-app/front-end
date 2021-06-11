@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from './redux/useSelector'
+import { useSelector } from '../hooks/redux/useSelector'
+
+import { useGetPlayerDataQuery } from '../redux/api/dataApi'
 
 interface PitcherInterface {
     firstName: string,
@@ -32,14 +34,22 @@ interface PitcherInterface {
 
 export const usePitcherRows = () => {
     const [filteredData, setFilteredData] = useState<PitcherInterface[]>([])
-    const data = useSelector(state => state.data.dataset)
+    const sort = useSelector(state => state.filters.sort.offensive)
     const filters = useSelector(state => state.filters.pitcherFilters)
-    const sort = useSelector(state => state.filters.sort.pitcher)
     const searchTerm = useSelector(state => state.search.term)
+    const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
+
+    const activeDivision = useSelector(state => state.filters.division)
+    const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
+
+    console.log(data?.data);
+    console.log('filtered', filteredData);
+
+
 
     useEffect(() => {
         if (data) {
-            setFilteredData(data
+            setFilteredData(data.data
                 // Filter by Position
                 .filter((elem: PitcherInterface) => elem.position === "P")
                 // Filter Stats
@@ -68,8 +78,7 @@ export const usePitcherRows = () => {
                     if (!searchTerm) return elem
                     return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
                 })
-
-                .sort((a, b) => {
+                .sort((a: any, b: any) => {
                     if (["lastName", "Team"].includes(sort.column)) {
                         if (sort.order === "DESC") {
                             if (a[sort.column] < b[sort.column]) {
@@ -103,7 +112,8 @@ export const usePitcherRows = () => {
                 .slice(0, 100)
             )
         }
-    }, [data,
+    }, [
+        data,
         filters.appearances,
         filters.completeGames,
         filters.earnedRunAverage,

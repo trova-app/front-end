@@ -7,7 +7,6 @@ import { colors } from '../../../../styles/colors'
 import Pool from '../../../../auth/Pool'
 import { initialState as reduxAuthInitialState, setTokens, setUserAttributes } from '../../../../redux/slices/auth'
 import { setSearchTerm } from '../../../../redux/slices/search'
-import { setData } from '../../../../redux/slices/data'
 
 import { useSelector } from '../../../../hooks/redux/useSelector'
 import { useDispatch } from '../../../../hooks/redux/useDispatch'
@@ -80,7 +79,6 @@ const Component: React.FC = ({ ...props }) => {
                 }
                 dispatch(setTokens(reduxAuthInitialState.tokens))
                 dispatch(setUserAttributes(reduxAuthInitialState.userAttributes))
-                dispatch(setData([]))
                 history.push("/login")
             }}>
                 LOG OUT

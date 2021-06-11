@@ -7,6 +7,12 @@ type DataRangesActionType = {
     }
 }
 
+type DivisionActionType = {
+    payload: {
+        division: string
+    }
+}
+
 export interface PositionsInterface {
     "P": boolean
     "C": boolean
@@ -105,6 +111,7 @@ export const offensiveSchema = {
 }
 
 export const initialState = {
+    division: "d1",
     sort: {
         pitcher: {
             column: "ERA",
@@ -138,6 +145,9 @@ const filterSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
+        setDivision: (state, action: DivisionActionType) => {
+            state.division = action.payload.division
+        },
         setDataRanges: (state, action: DataRangesActionType) => {
             state.pitcherExtremities = action.payload.pitchers
             state.offensiveExtremities = action.payload.hitters
@@ -202,6 +212,7 @@ const filterSlice = createSlice({
 })
 
 export const {
+    setDivision,
     setDataRanges,
     setPitcherSort,
     setOffensiveSort,

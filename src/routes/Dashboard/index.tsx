@@ -8,6 +8,7 @@ import Filters from '../../components/features/Dashboard/Filters/index'
 import DataTable from '../../components/features/Dashboard/DataTable'
 
 import { useSelector } from '../../hooks/redux/useSelector'
+import { useGetPlayerDataQuery } from '../../redux/api/dataApi'
 
 const Container = styled.div`
     position: relative;
@@ -28,7 +29,10 @@ const LastUpdated = styled.div`
 `
 
 const Dashboard: React.FC = ({ ...props }) => {
-    const lastUpdatedDate = useSelector(state => state.data.meta.lastUpdated)
+    const activeDivision = useSelector(state => state.filters.division)
+    const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
+    const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
+
 
     return (
         <FullScreen>
@@ -37,7 +41,7 @@ const Dashboard: React.FC = ({ ...props }) => {
             </Helmet>
             <Header />
             <Container>
-                {lastUpdatedDate && <LastUpdated>Last Updated - {lastUpdatedDate}</LastUpdated>}
+                {data?.meta?.lastUpdatedDate && <LastUpdated>Last Updated - {data?.meta?.lastUpdatedDate}</LastUpdated>}
                 <Filters />
                 <DataTable />
             </Container>

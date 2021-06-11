@@ -4,16 +4,22 @@ import { clearAllFilters, setIsDefaultFilters } from '../../../../redux/slices/f
 
 import { useSelector } from '../../../../hooks/redux/useSelector'
 import { useDispatch } from '../../../../hooks/redux/useDispatch'
+import { useGetPlayerDataQuery } from '../../../../redux/api/dataApi'
 
 import PlayerTypeToggler from './PlayerTypeToggler'
 import PitcherFilters from './PitcherFilters'
 import OffensiveFilters from './OffensiveFilters'
+import DivisionSelector from './DivisionSelector'
 
 const Filters = () => {
-    const dataIsFetched = useSelector(state => state.data.dataset).length > 0
     const filters = useSelector(state => state.filters)
     const isDefaultFilters = useSelector(state => state.filters.isDefaultFilters)
     const dispatch = useDispatch()
+
+    const activeDivision = useSelector(state => state.filters.division)
+    const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
+
+    const { isFetching } = useGetPlayerDataQuery(activeDivision, { skip: !token })
 
     return (
         <Styled.Container>
@@ -28,8 +34,9 @@ const Filters = () => {
                 Clear filters
                 </Styled.ClearFilters>
             <PlayerTypeToggler />
+            <DivisionSelector />
             {
-                dataIsFetched
+                !isFetching
                     ? filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />
                     : null
             }

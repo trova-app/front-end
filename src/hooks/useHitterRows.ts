@@ -1,6 +1,8 @@
 import { PositionsInterface } from '../redux/slices/filters'
 import { useState, useEffect } from 'react'
-import { useSelector } from '../hooks/redux/useSelector'
+import { useSelector } from './redux/useSelector'
+
+import { useGetPlayerDataQuery } from '../redux/api/dataApi'
 
 interface PlayerInterface {
     firstName: string,
@@ -27,15 +29,19 @@ interface PlayerInterface {
 
 export const useHitterRows = () => {
     const [filteredData, setFilteredData] = useState<PlayerInterface[]>([])
-    const data = useSelector(state => state.data.dataset)
     const statFilters = useSelector(state => state.filters.offensiveFilters)
     const positionFilter = useSelector(state => state.filters.positions)
     const sort = useSelector(state => state.filters.sort.offensive)
     const searchTerm = useSelector(state => state.search.term)
+    const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
+
+    const activeDivision = useSelector(state => state.filters.division)
+    const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
+
 
     useEffect(() => {
         if (data) {
-            setFilteredData(data
+            setFilteredData(data.data
                 // Filter by Position
                 .filter((elem: { position: string }) => positionFilter[elem.position as keyof PositionsInterface])
                 // Filter by Stats
@@ -61,7 +67,7 @@ export const useHitterRows = () => {
                     return elem.Team?.toLowerCase().includes(searchTerm.toLowerCase()) || (elem.firstName + " " + elem.lastName)?.toLowerCase().includes(searchTerm.toLowerCase())
                 })
 
-                .sort((a, b) => {
+                .sort((a: any, b: any) => {
                     if (["lastName", "Team", "position"].includes(sort.column)) {
                         if (sort.order === "DESC") {
                             if (a[sort.column] < b[sort.column]) {

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { rootReducer } from './rootReducer'
+import { dataApi } from './api/dataApi'
 
 export const store = configureStore({
     reducer: rootReducer,
@@ -8,6 +9,7 @@ export const store = configureStore({
         getDefaultMiddleware({
             serializableCheck: false
         })
+            .concat(dataApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>
