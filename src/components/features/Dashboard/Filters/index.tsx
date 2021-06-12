@@ -1,9 +1,13 @@
 import * as Styled from './style'
 
-import { clearAllFilters, setIsDefaultFilters } from '../../../../redux/slices/filters'
+import {
+    clearAllFilters,
+    setIsDefaultFilters,
+} from '../../../../redux/slices/filters'
 
 import { useSelector } from '../../../../hooks/redux/useSelector'
 import { useDispatch } from '../../../../hooks/redux/useDispatch'
+import { useSetDataRanges } from '../../../../hooks/useSetDataRanges'
 import { useGetPlayerDataQuery } from '../../../../redux/api/dataApi'
 
 import PlayerTypeToggler from './PlayerTypeToggler'
@@ -20,6 +24,8 @@ const Filters = () => {
     const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
 
     const { isFetching } = useGetPlayerDataQuery(activeDivision, { skip: !token })
+
+    useSetDataRanges(isFetching)
 
     return (
         <Styled.Container>

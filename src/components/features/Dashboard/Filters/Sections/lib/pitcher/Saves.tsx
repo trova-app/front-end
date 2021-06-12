@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const Saves: React.FC = () => (
     <PitcherRangeSelector
         title="SV"
-        filterKey="saves"
+        filterKey="SV"
         step={1}
     />
 )

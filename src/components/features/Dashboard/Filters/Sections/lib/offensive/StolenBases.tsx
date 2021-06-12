@@ -3,7 +3,7 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const StolenBases: React.FC = () => (
     <OffensiveRangeSelector
         title="SB"
-        filterKey="stolenBases"
+        filterKey="SB"
         step={1}
         toFixed={1}
     />

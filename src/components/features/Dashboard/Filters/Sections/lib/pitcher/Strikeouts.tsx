@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const Strikeouts: React.FC = () => (
     <PitcherRangeSelector
         title="SO"
-        filterKey="strikeouts"
+        filterKey="SO"
         step={1}
     />
 )

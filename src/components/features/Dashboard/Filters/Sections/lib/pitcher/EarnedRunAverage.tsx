@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const EarnedRunAverage: React.FC = () => (
     <PitcherRangeSelector
         title="ERA"
-        filterKey="earnedRunAverage"
+        filterKey="ERA"
         step={1}
         toFixed={2}
     />

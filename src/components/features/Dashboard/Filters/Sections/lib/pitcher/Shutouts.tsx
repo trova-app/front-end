@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const Shutouts: React.FC = () => (
     <PitcherRangeSelector
         title="SHO"
-        filterKey="shutouts"
+        filterKey="SHO"
         step={1}
     />
 )

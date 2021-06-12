@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const CompleteGames: React.FC = () => (
     <PitcherRangeSelector
         title="CG"
-        filterKey="completeGames"
+        filterKey="CG"
         step={1}
     />
 )

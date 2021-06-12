@@ -3,7 +3,7 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const Triples: React.FC = () => (
     <OffensiveRangeSelector
         title="3B"
-        filterKey="triples"
+        filterKey="3B"
         step={1}
         toFixed={1}
     />

@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const EarnedRuns: React.FC = () => (
     <PitcherRangeSelector
         title="ER"
-        filterKey="earnedRuns"
+        filterKey="ER"
         step={1}
     />
 )

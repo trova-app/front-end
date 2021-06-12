@@ -3,7 +3,7 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const HitByPitches: React.FC = () => (
     <OffensiveRangeSelector
         title="HBP"
-        filterKey="hitByPitches"
+        filterKey="HP"
         step={1}
         toFixed={1}
     />

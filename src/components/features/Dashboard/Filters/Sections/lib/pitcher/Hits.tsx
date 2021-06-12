@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const Hits: React.FC = () => (
     <PitcherRangeSelector
         title="H"
-        filterKey="hits"
+        filterKey="H"
         step={1}
     />
 )

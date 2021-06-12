@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const OpposingBattingAverage: React.FC = () => (
     <PitcherRangeSelector
         title="OBA"
-        filterKey="opposingBattingAverage"
+        filterKey="OBA"
         step={.001}
         toFixed={3}
     />

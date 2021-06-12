@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const InningsPitched: React.FC = () => (
     <PitcherRangeSelector
         title="IP"
-        filterKey="inningsPitched"
+        filterKey="IP"
         step={1}
     />
 )

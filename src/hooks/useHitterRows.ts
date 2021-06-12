@@ -45,22 +45,22 @@ export const useHitterRows = () => {
                 // Filter by Position
                 .filter((elem: { position: string }) => positionFilter[elem.position as keyof PositionsInterface])
                 // Filter by Stats
-                .filter((elem: PlayerInterface) => statFilters.gamesPlayed[1] >= Number(elem.GP) && statFilters.gamesPlayed[0] <= Number(elem.GP))
-                .filter((elem: PlayerInterface) => statFilters.atBats[1] >= Number(elem.AB) && statFilters.atBats[0] <= Number(elem.AB))
-                .filter((elem: PlayerInterface) => statFilters.battingAverage[1] >= Number(elem.AVG) && statFilters.battingAverage[0] <= Number(elem.AVG))
-                .filter((elem: PlayerInterface) => statFilters.onBasePercentage[1] >= Number(elem.OBP) && statFilters.onBasePercentage[0] <= Number(elem.OBP))
-                .filter((elem: PlayerInterface) => statFilters.onBasePlusSlugging[1] >= Number(elem.OPS) && statFilters.onBasePlusSlugging[0] <= Number(elem.OPS))
-                .filter((elem: PlayerInterface) => statFilters.runs[1] >= Number(elem.R) && statFilters.runs[0] <= Number(elem.R))
-                .filter((elem: PlayerInterface) => statFilters.hits[1] >= Number(elem.H) && statFilters.hits[0] <= Number(elem.H))
-                .filter((elem: PlayerInterface) => statFilters.doubles[1] >= Number(elem["2B"]) && statFilters.doubles[0] <= Number(elem["2B"]))
-                .filter((elem: PlayerInterface) => statFilters.triples[1] >= Number(elem["3B"]) && statFilters.triples[0] <= Number(elem["3B"]))
-                .filter((elem: PlayerInterface) => statFilters.homeRuns[1] >= Number(elem["HR"]) && statFilters.homeRuns[0] <= Number(elem["HR"]))
-                .filter((elem: PlayerInterface) => statFilters.rbi[1] >= Number(elem.RBI) && statFilters.rbi[0] <= Number(elem.RBI))
-                .filter((elem: PlayerInterface) => statFilters.walks[1] >= Number(elem["BB"]) && statFilters.walks[0] <= Number(elem["BB"]))
-                .filter((elem: PlayerInterface) => statFilters.strikeouts[1] >= Number(elem["SO"]) && statFilters.strikeouts[0] <= Number(elem["SO"]))
-                .filter((elem: PlayerInterface) => statFilters.stolenBases[1] >= Number(elem["SB"]) && statFilters.stolenBases[0] <= Number(elem["SB"]))
-                .filter((elem: PlayerInterface) => statFilters.caughtStealing[1] >= Number(elem["CS"]) && statFilters.caughtStealing[0] <= Number(elem["CS"]))
-                .filter((elem: PlayerInterface) => statFilters.hitByPitches[1] >= Number(elem["HP"]) && statFilters.hitByPitches[0] <= Number(elem["HP"]))
+                .filter((elem: PlayerInterface) => statFilters.GP[1] >= Number(elem.GP) && statFilters.GP[0] <= Number(elem.GP))
+                .filter((elem: PlayerInterface) => statFilters.AB[1] >= Number(elem.AB) && statFilters.AB[0] <= Number(elem.AB))
+                .filter((elem: PlayerInterface) => statFilters.AVG[1] >= Number(elem.AVG) && statFilters.AVG[0] <= Number(elem.AVG))
+                .filter((elem: PlayerInterface) => statFilters.OBP[1] >= Number(elem.OBP) && statFilters.OBP[0] <= Number(elem.OBP))
+                .filter((elem: PlayerInterface) => statFilters.OPS[1] >= Number(elem.OPS) && statFilters.OPS[0] <= Number(elem.OPS))
+                .filter((elem: PlayerInterface) => statFilters.R[1] >= Number(elem.R) && statFilters.R[0] <= Number(elem.R))
+                .filter((elem: PlayerInterface) => statFilters.H[1] >= Number(elem.H) && statFilters.H[0] <= Number(elem.H))
+                .filter((elem: PlayerInterface) => statFilters["2B"][1] >= Number(elem["2B"]) && statFilters["2B"][0] <= Number(elem["2B"]))
+                .filter((elem: PlayerInterface) => statFilters["3B"][1] >= Number(elem["3B"]) && statFilters["3B"][0] <= Number(elem["3B"]))
+                .filter((elem: PlayerInterface) => statFilters.HR[1] >= Number(elem["HR"]) && statFilters.HR[0] <= Number(elem["HR"]))
+                .filter((elem: PlayerInterface) => statFilters.RBI[1] >= Number(elem.RBI) && statFilters.RBI[0] <= Number(elem.RBI))
+                .filter((elem: PlayerInterface) => statFilters.BB[1] >= Number(elem["BB"]) && statFilters.BB[0] <= Number(elem["BB"]))
+                .filter((elem: PlayerInterface) => statFilters.SO[1] >= Number(elem["SO"]) && statFilters.SO[0] <= Number(elem["SO"]))
+                .filter((elem: PlayerInterface) => statFilters.SB[1] >= Number(elem["SB"]) && statFilters.SB[0] <= Number(elem["SB"]))
+                .filter((elem: PlayerInterface) => statFilters.CS[1] >= Number(elem["CS"]) && statFilters.CS[0] <= Number(elem["CS"]))
+                .filter((elem: PlayerInterface) => statFilters.HP[1] >= Number(elem["HP"]) && statFilters.HP[0] <= Number(elem["HP"]))
                 // Filter by Search
                 .filter((elem: PlayerInterface) => {
                     if (!searchTerm) return elem
@@ -102,26 +102,10 @@ export const useHitterRows = () => {
             )
         }
     }, [data,
-        statFilters.gamesPlayed,
-        statFilters.atBats,
-        statFilters.battingAverage,
-        statFilters.onBasePercentage,
-        statFilters.onBasePlusSlugging,
-        statFilters.runs,
-        statFilters.hits,
-        statFilters.doubles,
-        statFilters.triples,
-        statFilters.homeRuns,
-        statFilters.rbi,
-        statFilters.walks,
-        statFilters.strikeouts,
-        statFilters.stolenBases,
-        statFilters.caughtStealing,
-        statFilters.hitByPitches,
+        statFilters,
         positionFilter,
         searchTerm,
-        sort.column,
-        sort.order
+        sort
     ])
 
     return filteredData

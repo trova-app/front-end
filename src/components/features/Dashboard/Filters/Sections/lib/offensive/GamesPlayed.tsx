@@ -3,9 +3,9 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const GamesPlayed: React.FC = () => (
     <OffensiveRangeSelector
         title="GP"
-        filterKey="gamesPlayed"
+        filterKey="GP"
         step={1}
-        toFixed={1}
+        toFixed={0}
     />
 )
 

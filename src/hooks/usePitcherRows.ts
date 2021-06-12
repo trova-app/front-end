@@ -42,33 +42,28 @@ export const usePitcherRows = () => {
     const activeDivision = useSelector(state => state.filters.division)
     const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
 
-    console.log(data?.data);
-    console.log('filtered', filteredData);
-
-
-
     useEffect(() => {
         if (data) {
             setFilteredData(data.data
                 // Filter by Position
                 .filter((elem: PitcherInterface) => elem.position === "P")
                 // Filter Stats
-                .filter((elem: PitcherInterface) => filters.appearances[1] >= Number(elem.APP) && filters.appearances[0] <= Number(elem.APP))
-                .filter((elem: PitcherInterface) => filters.walks[1] >= Number(elem.BB) && filters.walks[0] <= Number(elem.BB))
-                .filter((elem: PitcherInterface) => filters.completeGames[1] >= Number(elem.CG) && filters.completeGames[0] <= Number(elem.CG))
-                .filter((elem: PitcherInterface) => filters.earnedRuns[1] >= Number(elem.ER) && filters.earnedRuns[0] <= Number(elem.ER))
-                .filter((elem: PitcherInterface) => filters.earnedRunAverage[1] >= Number(elem.ERA) && filters.earnedRunAverage[0] <= Number(elem.ERA))
-                .filter((elem: PitcherInterface) => filters.gamesStarted[1] >= Number(elem.GS) && filters.gamesStarted[0] <= Number(elem.GS))
-                .filter((elem: PitcherInterface) => filters.hits[1] >= Number(elem.H) && filters.hits[0] <= Number(elem.H))
-                .filter((elem: PitcherInterface) => filters.hitByPitches[1] >= Number(elem.HP) && filters.hitByPitches[0] <= Number(elem.HP))
-                .filter((elem: PitcherInterface) => filters.inningsPitched[1] >= Number(elem.IP) && filters.inningsPitched[0] <= Number(elem.IP))
-                .filter((elem: PitcherInterface) => filters.losses[1] >= Number(elem.L) && filters.losses[0] <= Number(elem.L))
-                .filter((elem: PitcherInterface) => filters.opposingBattingAverage[1] >= Number(elem.OBA) && filters.opposingBattingAverage[0] <= Number(elem.OBA))
-                .filter((elem: PitcherInterface) => filters.runs[1] >= Number(elem.R) && filters.runs[0] <= Number(elem.R))
-                .filter((elem: PitcherInterface) => filters.shutouts[1] >= Number(elem.SHO) && filters.shutouts[0] <= Number(elem.SHO))
-                .filter((elem: PitcherInterface) => filters.strikeouts[1] >= Number(elem.SO) && filters.strikeouts[0] <= Number(elem.SO))
-                .filter((elem: PitcherInterface) => filters.saves[1] >= Number(elem.SV) && filters.saves[0] <= Number(elem.SV))
-                .filter((elem: PitcherInterface) => filters.wins[1] >= Number(elem.W) && filters.wins[0] <= Number(elem.W))
+                .filter((elem: PitcherInterface) => filters.APP[1] >= Number(elem.APP) && filters.APP[0] <= Number(elem.APP))
+                .filter((elem: PitcherInterface) => filters.BB[1] >= Number(elem.BB) && filters.BB[0] <= Number(elem.BB))
+                .filter((elem: PitcherInterface) => filters.BB[1] >= Number(elem.CG) && filters.BB[0] <= Number(elem.CG))
+                .filter((elem: PitcherInterface) => filters.ER[1] >= Number(elem.ER) && filters.ER[0] <= Number(elem.ER))
+                .filter((elem: PitcherInterface) => filters.ERA[1] >= Number(elem.ERA) && filters.ERA[0] <= Number(elem.ERA))
+                .filter((elem: PitcherInterface) => filters.GS[1] >= Number(elem.GS) && filters.GS[0] <= Number(elem.GS))
+                .filter((elem: PitcherInterface) => filters.H[1] >= Number(elem.H) && filters.H[0] <= Number(elem.H))
+                .filter((elem: PitcherInterface) => filters.HP[1] >= Number(elem.HP) && filters.HP[0] <= Number(elem.HP))
+                .filter((elem: PitcherInterface) => filters.IP[1] >= Number(elem.IP) && filters.IP[0] <= Number(elem.IP))
+                .filter((elem: PitcherInterface) => filters.L[1] >= Number(elem.L) && filters.L[0] <= Number(elem.L))
+                .filter((elem: PitcherInterface) => filters.OBA[1] >= Number(elem.OBA) && filters.OBA[0] <= Number(elem.OBA))
+                .filter((elem: PitcherInterface) => filters.R[1] >= Number(elem.R) && filters.R[0] <= Number(elem.R))
+                .filter((elem: PitcherInterface) => filters.SHO[1] >= Number(elem.SHO) && filters.SHO[0] <= Number(elem.SHO))
+                .filter((elem: PitcherInterface) => filters.SO[1] >= Number(elem.SO) && filters.SO[0] <= Number(elem.SO))
+                .filter((elem: PitcherInterface) => filters.SV[1] >= Number(elem.SV) && filters.SV[0] <= Number(elem.SV))
+                .filter((elem: PitcherInterface) => filters.W[1] >= Number(elem.W) && filters.W[0] <= Number(elem.W))
                 .filter((elem: PitcherInterface) => filters.bbRate[1] >= Number(elem.bbRate) && filters.bbRate[0] <= Number(elem.WP))
                 .filter((elem: PitcherInterface) => filters.hRate[1] >= Number(elem.hRate) && filters.hRate[0] <= Number(elem.WP))
                 .filter((elem: PitcherInterface) => filters.kRate[1] >= Number(elem.kRate) && filters.kRate[0] <= Number(elem.WP))
@@ -114,30 +109,9 @@ export const usePitcherRows = () => {
         }
     }, [
         data,
-        filters.appearances,
-        filters.completeGames,
-        filters.earnedRunAverage,
-        filters.earnedRuns,
-        filters.gamesStarted,
-        filters.hitByPitches,
-        filters.hits,
-        filters.inningsPitched,
-        filters.losses,
-        filters.opposingBattingAverage,
-        filters.runs,
-        filters.saves,
-        filters.shutouts,
-        filters.strikeouts,
-        filters.walks,
-        filters.wildPitches,
-        filters.wins,
+        filters,
         searchTerm,
-        sort.column,
-        sort.order,
-        filters.bbRate,
-        filters.kRate,
-        filters.hRate,
-        filters.soTObb
+        sort
     ])
 
     return filteredData

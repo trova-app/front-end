@@ -3,7 +3,7 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const Runs: React.FC = () => (
     <OffensiveRangeSelector
         title="R"
-        filterKey="runs"
+        filterKey="R"
         step={1}
         toFixed={1}
     />

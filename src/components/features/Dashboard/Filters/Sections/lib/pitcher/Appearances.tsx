@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const Appearances: React.FC = () => (
     <PitcherRangeSelector
         title="APP"
-        filterKey="appearances"
+        filterKey="APP"
         step={1}
     />
 )

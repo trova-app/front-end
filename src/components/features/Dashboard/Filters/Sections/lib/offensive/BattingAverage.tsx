@@ -3,7 +3,7 @@ import OffensiveRangeSelector from '../../OffensiveRangeSelector'
 const BattingAverage: React.FC = () => (
     <OffensiveRangeSelector
         title="AVG"
-        filterKey="battingAverage"
+        filterKey="AVG"
         step={.001}
         toFixed={3}
     />

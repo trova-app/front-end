@@ -3,7 +3,7 @@ import PitcherRangeSelector from '../../PitcherRangeSelector'
 const WildPitches: React.FC = () => (
     <PitcherRangeSelector
         title="WP"
-        filterKey="wildPitches"
+        filterKey="WP"
         step={1}
     />
 )

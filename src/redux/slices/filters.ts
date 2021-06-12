@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 type DataRangesActionType = {
     payload: {
-        pitchers: PitcherFiltersInterface,
-        hitters: OffensiveFiltersInterface
+        pitchers: typeof pitcherSchema,
+        hitters: typeof offensiveSchema
     }
 }
 
@@ -24,91 +24,53 @@ export interface PositionsInterface {
     "CF": boolean
     "RF": boolean
 }
-interface PitcherFiltersInterface {
-    appearances: number[],
-    walks: number[],
-    completeGames: number[],
-    earnedRuns: number[],
-    earnedRunAverage: number[],
-    gamesStarted: number[],
-    hits: number[],
-    hitByPitches: number[],
-    inningsPitched: number[],
-    losses: number[],
-    opposingBattingAverage: number[],
-    runs: number[],
-    shutouts: number[],
-    strikeouts: number[],
-    saves: number[],
-    wins: number[],
-    wildPitches: number[],
-    bbRate: number[],
-    kRate: number[],
-    hRate: number[],
-    soTObb: number[]
-}
-
-export interface OffensiveFiltersInterface {
-    gamesPlayed: number[],
-    atBats: number[],
-    battingAverage: number[],
-    onBasePercentage: number[],
-    onBasePlusSlugging: number[],
-    runs: number[],
-    hits: number[],
-    doubles: number[],
-    triples: number[],
-    homeRuns: number[],
-    rbi: number[],
-    walks: number[],
-    strikeouts: number[],
-    stolenBases: number[],
-    caughtStealing: number[],
-    hitByPitches: number[],
-}
 
 export const pitcherSchema = {
-    appearances: [0, 0],
-    walks: [0, 0],
-    completeGames: [0, 0],
-    earnedRuns: [0, 0],
-    earnedRunAverage: [0, 0],
-    gamesStarted: [0, 0],
-    hits: [0, 0],
-    hitByPitches: [0, 0],
-    inningsPitched: [0, 0],
-    losses: [0, 0],
-    opposingBattingAverage: [0, 0],
-    runs: [0, 0],
-    shutouts: [0, 0],
-    strikeouts: [0, 0],
-    saves: [0, 0],
-    wins: [0, 0],
-    wildPitches: [0, 0],
+    APP: [0, 0],
+    BB: [0, 0],
+    CG: [0, 0],
+    ER: [0, 0],
+    ERA: [0, 0],
+    GS: [0, 0],
+    H: [0, 0],
+    HP: [0, 0],
+    IP: [0, 0],
+    L: [0, 0],
+    OBA: [0, 0],
+    R: [0, 0],
+    SHO: [0, 0],
+    SO: [0, 0],
+    SV: [0, 0],
+    W: [0, 0],
+    WP: [0, 0],
     bbRate: [0, 0],
     kRate: [0, 0],
     hRate: [0, 0],
     soTObb: [0, 0]
 }
 
+export type PitcherBoundsInterface = typeof pitcherSchema
+
 export const offensiveSchema = {
-    gamesPlayed: [0, 0],
-    atBats: [0, 0],
-    battingAverage: [0, 0],
-    onBasePercentage: [0, 0],
-    onBasePlusSlugging: [0, 0],
-    runs: [0, 0],
-    hits: [0, 0],
-    doubles: [0, 0],
-    triples: [0, 0],
-    homeRuns: [0, 0],
-    rbi: [0, 0],
-    walks: [0, 0],
-    strikeouts: [0, 0],
-    stolenBases: [0, 0],
-    caughtStealing: [0, 0],
-    hitByPitches: [0, 0]
+    GP: [0, 0],
+    AB: [0, 0],
+    AVG: [0, 0],
+    OBP: [0, 0],
+    OPS: [0, 0],
+    R: [0, 0],
+    H: [0, 0],
+    "2B": [0, 0],
+    "3B": [0, 0],
+    HR: [0, 0],
+    RBI: [0, 0],
+    BB: [0, 0],
+    SO: [0, 0],
+    SB: [0, 0],
+    CS: [0, 0],
+    HP: [0, 0]
 }
+
+export type OffensiveBoundsInterface = typeof offensiveSchema
 
 export const initialState = {
     division: "d1",
@@ -185,10 +147,10 @@ const filterSlice = createSlice({
             state.positions[action.payload as keyof PositionsInterface] = !state.positions[action.payload as keyof PositionsInterface]
         },
         setPitcherBounds: (state, action) => {
-            state.pitcherFilters[action.payload.key as keyof PitcherFiltersInterface] = action.payload.value
+            state.pitcherFilters[action.payload.key as keyof typeof pitcherSchema] = action.payload.value
         },
         setOffensiveBounds: (state, action) => {
-            state.offensiveFilters[action.payload.key as keyof OffensiveFiltersInterface] = action.payload.value
+            state.offensiveFilters[action.payload.key as keyof typeof offensiveSchema] = action.payload.value
         },
         setIsDefaultFilters: (state, action) => {
             state.isDefaultFilters = action.payload
