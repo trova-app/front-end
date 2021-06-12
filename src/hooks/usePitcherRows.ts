@@ -34,7 +34,7 @@ interface PitcherInterface {
 
 export const usePitcherRows = () => {
     const [filteredData, setFilteredData] = useState<PitcherInterface[]>([])
-    const sort = useSelector(state => state.filters.sort.offensive)
+    const sort = useSelector(state => state.filters.sort.pitcher)
     const filters = useSelector(state => state.filters.pitcherFilters)
     const searchTerm = useSelector(state => state.search.term)
     const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
