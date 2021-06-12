@@ -50,16 +50,12 @@ const jucoHeaders = [
     ["R"],
     ["H"],
     ["hRate", "H/9"],
-    ["OBA"],
     ["SO"],
     ["BB"],
     ["soTObb", "K/BB"],
     ["kRate", "K/9"],
     ["bbRate", "BB/9"],
-    ["HP"],
     ["CG"],
-    ["SHO"],
-    ["WP"]
 ]
 
 const DataTable: React.FC = () => {
@@ -112,7 +108,7 @@ const DataTable: React.FC = () => {
                     <td>{elem.R}</td>
                     <td>{elem.H}</td>
                     <td>{elem.hRate.toFixed(1)}</td>
-                    <td>{elem.OBA.toFixed(3)}</td>
+                    <td>{elem.OBA?.toFixed(3)}</td>
                     <td>{elem.SO}</td>
                     <td>{elem.BB}</td>
                     <td>{elem.soTObb.toFixed(1)}</td>
@@ -176,7 +172,6 @@ const DataTable: React.FC = () => {
                     <td>{elem.soTObb.toFixed(1)}</td>
                     <td>{elem.kRate.toFixed(1)}</td>
                     <td>{elem.bbRate.toFixed(1)}</td>
-                    <td>{elem.HP}</td>
                     <td>{elem.CG}</td>
                 </Styled.Row>
             )
@@ -192,7 +187,6 @@ const DataTable: React.FC = () => {
                     <Styled.Header>
                         <tr>
                             {activeDivision === "d1" && renderD1Headers()}
-
                             {activeDivision === "juco" && renderJucoHeaders()}
                         </tr>
                     </Styled.Header>

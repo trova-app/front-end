@@ -31,8 +31,7 @@ const LastUpdated = styled.div`
 const Dashboard: React.FC = ({ ...props }) => {
     const activeDivision = useSelector(state => state.filters.division)
     const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
-    const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
-
+    const { data, isFetching } = useGetPlayerDataQuery(activeDivision, { skip: !token })
 
     return (
         <FullScreen>
@@ -41,7 +40,7 @@ const Dashboard: React.FC = ({ ...props }) => {
             </Helmet>
             <Header />
             <Container>
-                {data?.meta?.lastUpdatedDate && <LastUpdated>Last Updated - {data?.meta?.lastUpdatedDate}</LastUpdated>}
+                {data?.meta?.lastUpdated && !isFetching && <LastUpdated>Last Updated - {data?.meta?.lastUpdated}</LastUpdated>}
                 <Filters />
                 <DataTable />
             </Container>

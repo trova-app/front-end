@@ -16,7 +16,7 @@ export const dataApi = createApi({
     }),
     endpoints: (builder) => ({
         getPlayerData: builder.query({
-            query: (division) => `/data?division=${division}`
+            query: (division) => `/data?division=${division}`,
         })
     })
 })

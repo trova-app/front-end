@@ -36,11 +36,11 @@ export const useHitterRows = () => {
     const token = useSelector(state => state.auth.tokens.idToken.jwtToken)
 
     const activeDivision = useSelector(state => state.filters.division)
-    const { data } = useGetPlayerDataQuery(activeDivision, { skip: !token })
+    const { data, isFetching } = useGetPlayerDataQuery(activeDivision, { skip: !token })
 
 
     useEffect(() => {
-        if (data) {
+        if (data && !isFetching) {
             if (activeDivision === "d1") {
                 setFilteredData(data.data
                     // Filter by Position
@@ -163,6 +163,7 @@ export const useHitterRows = () => {
             }
         }
     }, [
+        isFetching,
         activeDivision,
         data,
         statFilters,
