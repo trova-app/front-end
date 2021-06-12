@@ -5,7 +5,6 @@ const Runs: React.FC = () => (
         title="R"
         filterKey="R"
         step={1}
-        toFixed={1}
     />
 )
 

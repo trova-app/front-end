@@ -1,5 +1,7 @@
 import * as Styled from './style'
 
+import { useSelector } from '../../../../hooks/redux/useSelector'
+
 import Appearances from './Sections/lib/pitcher/Appearances'
 import CompleteGames from './Sections/lib/pitcher/CompleteGames'
 import EarnedRunAverage from './Sections/lib/pitcher/EarnedRunAverage'
@@ -23,6 +25,9 @@ import StrikeoutsToWalksRatio from './Sections/lib/pitcher/StrikeoutsToWalksRati
 import WalkRate from './Sections/lib/pitcher/WalkRate'
 
 const Filters: React.FC = ({ ...props }) => {
+    const activeDivision = useSelector(state => state.filters.division)
+    const notJuco = activeDivision !== "juco"
+
     return (
         <Styled.Scrollable>
             <Styled.HR />
@@ -31,20 +36,20 @@ const Filters: React.FC = ({ ...props }) => {
             <EarnedRuns />
             <GamesStarted />
             <CompleteGames />
-            <Shutouts />
+            {notJuco && <Shutouts />}
             <InningsPitched />
             <StrikeoutsToWalksRatio />
             <Strikeouts />
             <StrikeoutRate />
             <Walks />
             <WalkRate />
-            <OpposingBattingAverage />
+            {notJuco && <OpposingBattingAverage />}
             <Hits />
             <HitRate />
-            <HitByPitches />
+            {notJuco && <HitByPitches />}
             <Runs />
             <Saves />
-            <WildPitches />
+            {notJuco && <WildPitches />}
             <Wins />
             <Losses />
         </Styled.Scrollable>

@@ -5,7 +5,6 @@ const Triples: React.FC = () => (
         title="3B"
         filterKey="3B"
         step={1}
-        toFixed={1}
     />
 )
 

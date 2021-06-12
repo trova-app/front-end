@@ -5,7 +5,6 @@ const HomeRuns: React.FC = () => (
         title="HR"
         filterKey="HR"
         step={1}
-        toFixed={1}
     />
 )
 

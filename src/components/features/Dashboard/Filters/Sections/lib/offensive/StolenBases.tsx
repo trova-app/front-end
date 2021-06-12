@@ -5,7 +5,6 @@ const StolenBases: React.FC = () => (
         title="SB"
         filterKey="SB"
         step={1}
-        toFixed={1}
     />
 )
 

@@ -12,7 +12,7 @@ interface Props {
     filterKey: keyof typeof initialState.offensiveFilters,
     title: string,
     step: number,
-    toFixed: number,
+    toFixed?: number,
     units?: "percentage"
 }
 

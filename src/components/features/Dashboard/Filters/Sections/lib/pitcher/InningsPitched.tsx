@@ -5,6 +5,7 @@ const InningsPitched: React.FC = () => (
         title="IP"
         filterKey="IP"
         step={1}
+        toFixed={1}
     />
 )
 

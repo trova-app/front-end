@@ -5,7 +5,6 @@ const Doubles: React.FC = () => (
         title="2B"
         filterKey="2B"
         step={1}
-        toFixed={1}
     />
 )
 

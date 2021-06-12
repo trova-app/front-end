@@ -5,7 +5,6 @@ const Walks: React.FC = () => (
         title="BB"
         filterKey="BB"
         step={1}
-        toFixed={1}
     />
 )
 

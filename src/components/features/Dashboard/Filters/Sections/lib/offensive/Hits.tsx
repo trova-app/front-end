@@ -5,7 +5,6 @@ const Hits: React.FC = () => (
         title="H"
         filterKey="H"
         step={1}
-        toFixed={1}
     />
 )
 

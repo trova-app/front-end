@@ -4,7 +4,7 @@ const EarnedRunAverage: React.FC = () => (
     <PitcherRangeSelector
         title="ERA"
         filterKey="ERA"
-        step={1}
+        step={.01}
         toFixed={2}
     />
 )

@@ -5,7 +5,6 @@ const Strikeouts: React.FC = () => (
         title="SO"
         filterKey="SO"
         step={1}
-        toFixed={1}
     />
 )
 

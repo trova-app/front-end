@@ -5,7 +5,6 @@ const RBI: React.FC = () => (
         title="RBI"
         filterKey="RBI"
         step={1}
-        toFixed={1}
     />
 )
 

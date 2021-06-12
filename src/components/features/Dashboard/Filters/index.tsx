@@ -7,7 +7,6 @@ import {
 
 import { useSelector } from '../../../../hooks/redux/useSelector'
 import { useDispatch } from '../../../../hooks/redux/useDispatch'
-import { useSetDataRanges } from '../../../../hooks/useSetDataRanges'
 import { useGetPlayerDataQuery } from '../../../../redux/api/dataApi'
 
 import PlayerTypeToggler from './PlayerTypeToggler'
@@ -25,8 +24,6 @@ const Filters = () => {
 
     const { isFetching } = useGetPlayerDataQuery(activeDivision, { skip: !token })
 
-    useSetDataRanges(isFetching)
-
     return (
         <Styled.Container>
             <Styled.Header>Filters</Styled.Header>
@@ -39,8 +36,8 @@ const Filters = () => {
                 }}>
                 Clear filters
                 </Styled.ClearFilters>
-            <PlayerTypeToggler />
             <DivisionSelector />
+            <PlayerTypeToggler />
             {
                 !isFetching
                     ? filters.positions.P ? <PitcherFilters /> : <OffensiveFilters />

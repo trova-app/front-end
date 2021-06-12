@@ -1,5 +1,7 @@
 import * as Styled from './style'
 
+import { useSelector } from '../../../../hooks/redux/useSelector'
+
 import Position from './Sections/lib/offensive/Position'
 import GamesPlayed from './Sections/lib/offensive/GamesPlayed'
 import AtBats from './Sections/lib/offensive/AtBats'
@@ -19,10 +21,13 @@ import CaughtStealing from './Sections/lib/offensive/CaughtStealing'
 import HitByPitches from './Sections/lib/offensive/HitByPitches'
 
 const Filters: React.FC = ({ ...props }) => {
+    const activeDivision = useSelector(state => state.filters.division)
+    const notJuco = activeDivision !== "juco"
+
     return (
         <Styled.Scrollable>
             <Styled.HR />
-            <Position />
+            {notJuco && <Position />}
             <GamesPlayed />
             <AtBats />
             <BattingAverage />
@@ -38,7 +43,7 @@ const Filters: React.FC = ({ ...props }) => {
             <Strikeouts />
             <StolenBases />
             <CaughtStealing />
-            <HitByPitches />
+            {notJuco && <HitByPitches />}
         </Styled.Scrollable>
     )
 }
